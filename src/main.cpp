@@ -9,4 +9,5 @@ int main()
 
     std::string test = kneel.getName();
     std::cout << test << std::endl;
+    kneel.displayInfo();
 }
