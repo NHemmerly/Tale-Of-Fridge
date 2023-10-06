@@ -1,13 +1,23 @@
 #include <iostream>
 #include "player.h"
+#include "fileLoader.h"
 
 
 
 int main()
 {
-    Player kneel("Kneel");
+    Player kneel;
 
-    std::string test = kneel.getName();
-    std::cout << test << std::endl;
-    kneel.displayInfo();
+    bool gameIsRunning = true;
+    /*GameLoop*/
+    while(gameIsRunning)
+    {
+        std::string inputHandler;
+        FileLoad::loadTextFile("textAssets/story1.txt");
+        std::cin >> inputHandler;
+        kneel.setName(inputHandler);
+        FileLoad::loadTextFile("textAssets/welcome.txt"); 
+        std::cout << kneel.getName() << std::endl;
+
+    };
 }

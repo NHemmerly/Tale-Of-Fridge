@@ -5,12 +5,13 @@
 class Player
 {
     public:
-        Player(const std::string& name);
+        Player();
 
         const std::string& getName() const;
         const int& getHP() const;
         const int& getAttack() const;
         const int& getDefense() const;
+        void setName(const std::string& name);
         void displayInfo();
 
     private:
