@@ -6,18 +6,21 @@
 
 int main()
 {
-    Player kneel;
+    Player player;
 
     bool gameIsRunning = true;
     /*GameLoop*/
     while(gameIsRunning)
     {
         std::string inputHandler;
-        FileLoad::loadTextFile("textAssets/story1.txt");
+        FileLoad::writeText("textAssets/story1.txt", 0);
         std::cin >> inputHandler;
-        kneel.setName(inputHandler);
-        FileLoad::loadTextFile("textAssets/welcome.txt"); 
-        std::cout << kneel.getName() << std::endl;
+        player.setName(inputHandler);
+        FileLoad::writeText("textAssets/iRemember.txt", 0); 
+        std::cout << player.getName() << std::endl;
+        FileLoad::writeText("textAssets/myName.txt", 0);
+        std::cin >> inputHandler;
+        
 
     };
 }
