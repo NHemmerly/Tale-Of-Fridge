@@ -32,3 +32,16 @@ void FileLoad::writeText(const std::string& filepath, int options)
         txtFile.close();
     }
 }
+
+const std::string FileLoad::returnText(const std::string& filepath)
+{
+    std::fstream txtFile;
+    txtFile.open(filepath, std::ios::in);
+    if(txtFile.is_open())
+    {
+        return std::string((std::istreambuf_iterator<char>(txtFile)), (std::istreambuf_iterator<char>()));
+    } else{
+        return "Failed to load";
+    }
+}
+

@@ -23,10 +23,11 @@ int main()
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
 
-        inventory.addItem(Item(inputHandler));
+        inventory.addItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
         std::cout << inventory.getName(0) << std::endl;
-        inventory.addItem(Item("testItem"));
-        std::cout << inventory.getName(1) << std::endl;
+        inventory.addItem(Item("testItem", "testDescription", 3, 1));
+        std::cout << inventory.getDescription(0) << std::endl;
+        inventory.displayInfo(0);
 
         
 

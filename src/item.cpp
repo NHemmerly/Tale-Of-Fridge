@@ -24,10 +24,42 @@ const int InventoryItem::getDefense(const int& dataIndex) const
     return inventory[dataIndex].getDefense();
 }
 
+void InventoryItem::displayInfo(const int& dataIndex)
+{
+    inventory[dataIndex].displayInfo();
+}
+
+
 const std::string& Item::getName() const
 {
     return name;
 }
+
+const std::string& Item::getDescription() const
+{
+    return description;
+}
+
+const int Item::getAttack() const
+{
+    return attack;
+}
+    
+const int Item::getDefense() const
+{
+    return defense;
+}
+
+void Item::displayInfo()
+{
+    std::cout << "\n" << name << "\n" <<
+    "===================================================\n" << 
+    "Description: " << description << "\n" <<
+    "Attack: " << attack << "\n" << 
+    "Defense: " << defense << std::endl;
+}
+
+//Adders
 
 void InventoryItem::addItem(const Item& newItem)
 {

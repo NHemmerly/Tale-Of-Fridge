@@ -1,7 +1,7 @@
 CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o: \
- /home/kneel/repos/taleOfFridge/src/fileLoader.cpp \
+ /home/neilh/repos/Tale-Of-Fridge/src/fileLoader.cpp \
  /usr/include/stdc-predef.h \
- /home/kneel/repos/taleOfFridge/src/fileLoader.h \
+ /home/neilh/repos/Tale-Of-Fridge/src/fileLoader.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

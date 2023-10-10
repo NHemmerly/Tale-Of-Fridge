@@ -1,5 +1,5 @@
 CMakeFiles/taleOfFridge.dir/src/main.cpp.o: \
- /home/kneel/repos/taleOfFridge/src/main.cpp /usr/include/stdc-predef.h \
+ /home/neilh/repos/Tale-Of-Fridge/src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -146,8 +146,8 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/kneel/repos/taleOfFridge/src/player.h \
- /home/kneel/repos/taleOfFridge/src/fileLoader.h \
+ /home/neilh/repos/Tale-Of-Fridge/src/player.h \
+ /home/neilh/repos/Tale-Of-Fridge/src/fileLoader.h \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -161,7 +161,7 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: \
  /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/kneel/repos/taleOfFridge/src/item.h /usr/include/c++/11/vector \
+ /home/neilh/repos/Tale-Of-Fridge/src/item.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
