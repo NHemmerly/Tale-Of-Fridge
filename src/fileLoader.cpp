@@ -12,14 +12,16 @@ void FileLoad::writeText(const std::string& filepath, int options)
     {
         std::string text;
         switch(options){
+            //linebreak
             case 0:
             {
                 while (std::getline(txtFile, text)) {
-                    // sleep_for(seconds(1));
+                    sleep_for(milliseconds(500));
                     std::cout << text << std::endl;
                 }
                 break;
             }
+            //No linebreak
             case 1:
             {
                 std::string content((std::istreambuf_iterator<char>(txtFile)), (std::istreambuf_iterator<char>()));
@@ -42,6 +44,22 @@ const std::string FileLoad::returnText(const std::string& filepath)
         return std::string((std::istreambuf_iterator<char>(txtFile)), (std::istreambuf_iterator<char>()));
     } else{
         return "Failed to load";
+    }
+}
+
+void FileLoad::dialogText(const std::string& filepath, const std::string& itemName)
+{
+     std::fstream txtFile;
+    txtFile.open(filepath, std::ios::in);
+    if(txtFile.is_open())
+    {
+        std::string text;
+        std::cout << itemName <<": ";
+        while (std::getline(txtFile, text)) {
+            // sleep_for(seconds(1));
+            std::cout << text << std::endl;
+        }
+        txtFile.close();
     }
 }
 

@@ -202,7 +202,13 @@ CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o: ../src/fileLoader.cpp \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/bits/this_thread_sleep.h
+  /usr/include/c++/11/bits/this_thread_sleep.h \
+  ../src/item.h \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc
 
 CMakeFiles/fridgeLibs.dir/src/item.cpp.o: ../src/item.cpp \
   /usr/include/stdc-predef.h \

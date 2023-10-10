@@ -24,10 +24,7 @@ int main()
         std::cin >> inputHandler;
 
         inventory.addItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
-        std::cout << inventory.getName(0) << std::endl;
-        inventory.addItem(Item("testItem", "testDescription", 3, 1));
-        std::cout << inventory.getDescription(0) << std::endl;
-        inventory.displayInfo(0);
+        FileLoad::dialogText("textAssets/1/1.txt", inventory.getName(0));
 
         
 
