@@ -3,8 +3,7 @@
 #include "fileLoader.h"
 #include "item.h"
 
-ItemData* swordData = new ItemData{0, "sword", "testSword", 10, 0};
-itemInitializationData.push_back(swordData);
+
 
 int main()
 {
