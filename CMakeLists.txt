@@ -6,7 +6,9 @@ add_library(fridgeLibs
     src/player.h
     src/player.cpp
     src/fileLoader.h 
-    src/fileLoader.cpp  
+    src/fileLoader.cpp
+    src/item.h 
+    src/item.cpp   
 )
 
 add_executable(taleOfFridge src/main.cpp)

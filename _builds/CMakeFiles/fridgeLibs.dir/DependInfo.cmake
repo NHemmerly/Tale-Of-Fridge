@@ -8,8 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/neilh/repos/Tale-Of-Fridge/src/fileLoader.cpp" "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o.d"
-  "/home/neilh/repos/Tale-Of-Fridge/src/player.cpp" "CMakeFiles/fridgeLibs.dir/src/player.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/player.cpp.o.d"
+  "/home/kneel/repos/taleOfFridge/src/fileLoader.cpp" "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o.d"
+  "/home/kneel/repos/taleOfFridge/src/item.cpp" "CMakeFiles/fridgeLibs.dir/src/item.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/item.cpp.o.d"
+  "/home/kneel/repos/taleOfFridge/src/player.cpp" "CMakeFiles/fridgeLibs.dir/src/player.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/player.cpp.o.d"
   )
 
 # Targets to which this target links.

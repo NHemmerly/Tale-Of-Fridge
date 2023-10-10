@@ -7,6 +7,6 @@
 class FileLoad
 {
 public:
-    static const std::string& writeText(const std::string& filepath, int options);
+    static void writeText(const std::string& filepath, int options);
 
 };

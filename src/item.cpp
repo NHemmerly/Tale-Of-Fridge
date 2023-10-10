@@ -1,26 +1,47 @@
 #include "item.h"
 
+InventoryItem::InventoryItem()
+{
+    this->inventory = inventory;
+}
 
  //Getters
-const std::string& InventoryItem::getName() const
+const std::string& InventoryItem::getName(const int& dataIndex) const
 {
-    return itemInitializationData[dataIndex]->name;
+    return inventory[dataIndex].getName();
 }
-const std::string& InventoryItem::getDescription() const
+const std::string& InventoryItem::getDescription(const int& dataIndex) const
 {
-    return itemInitializationData[dataIndex]->itemDescription;
+    return inventory[dataIndex].getDescription();
 
 }
-const int InventoryItem::getAttack() const
+const int InventoryItem::getAttack(const int& dataIndex) const
 {
-    return itemInitializationData[dataIndex]->attack;
+    return inventory[dataIndex].getAttack();
 }
-const int InventoryItem::getDefense() const
+const int InventoryItem::getDefense(const int& dataIndex) const
 {
-    return itemInitializationData[dataIndex]->defense;
+    return inventory[dataIndex].getDefense();
 }
+
+const std::string& Item::getName() const
+{
+    return name;
+}
+
+void InventoryItem::addItem(const Item& newItem)
+{
+    inventory.push_back(newItem);
+}
+
 
 //Setters
+void Item::setName(const std::string& newName)
+{
+    name = newName;
+}
+
+
 void InventoryItem::setName(int index, const std::string& newName)
 {
     if (index >= 0 && index < inventory.size())

@@ -4,7 +4,7 @@ using namespace std::this_thread;
 using namespace std::chrono;
 
 //Publics
-const std::string& FileLoad::writeText(const std::string& filepath, int options)
+void FileLoad::writeText(const std::string& filepath, int options)
 {
     std::fstream txtFile;
     txtFile.open(filepath, std::ios::in);
@@ -15,7 +15,7 @@ const std::string& FileLoad::writeText(const std::string& filepath, int options)
             case 0:
             {
                 while (std::getline(txtFile, text)) {
-                    sleep_for(seconds(1));
+                    // sleep_for(seconds(1));
                     std::cout << text << std::endl;
                 }
                 break;

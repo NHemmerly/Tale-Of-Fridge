@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -10,17 +12,34 @@ struct ItemData {
     int defense;
 };
 
-std::vector<ItemData*> itemInitializationData;
-
-class InventoryItem {
+class Item {
 public:
-    InventoryItem(int dataIndex) : dataIndex(dataIndex) {}
+    //Item constructor
+    Item(const std::string& name) : name(name) {}
 
-    //Getters
+    // Getter methods
     const std::string& getName() const;
     const std::string& getDescription() const;
     const int getAttack() const;
     const int getDefense() const;
+
+    //Setters
+    void setName(const std::string& newName);
+private:
+    std::string name;
+};
+
+class InventoryItem {
+public:
+    InventoryItem();
+
+    void addItem(const Item& newItem);
+
+    //Getters
+    const std::string& getName(const int& dataIndex) const;
+    const std::string& getDescription(const int& dataIndex) const;
+    const int getAttack(const int& dataIndex) const;
+    const int getDefense(const int& dataIndex) const;
 
     //Setters
     void setName(int index, const std::string& newName);
@@ -29,7 +48,7 @@ public:
     void setDefense(int index, const int& newDefense);
 private:
     int dataIndex;
-    std::vector<InventoryItem> inventory;
+    std::vector<Item> inventory;
 };
 
 

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/neilh/repos/Tale-Of-Fridge
+CMAKE_SOURCE_DIR = /home/kneel/repos/taleOfFridge
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/neilh/repos/Tale-Of-Fridge/_builds
+CMAKE_BINARY_DIR = /home/kneel/repos/taleOfFridge/_builds
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/neilh/repos/Tale-Of-Fridge/_builds/CMakeFiles /home/neilh/repos/Tale-Of-Fridge/_builds//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kneel/repos/taleOfFridge/_builds/CMakeFiles /home/kneel/repos/taleOfFridge/_builds//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/neilh/repos/Tale-Of-Fridge/_builds/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kneel/repos/taleOfFridge/_builds/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -166,6 +166,30 @@ src/fileLoader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.s
 .PHONY : src/fileLoader.cpp.s
 
+src/item.o: src/item.cpp.o
+.PHONY : src/item.o
+
+# target to build an object file
+src/item.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/item.cpp.o
+.PHONY : src/item.cpp.o
+
+src/item.i: src/item.cpp.i
+.PHONY : src/item.i
+
+# target to preprocess a source file
+src/item.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/item.cpp.i
+.PHONY : src/item.cpp.i
+
+src/item.s: src/item.cpp.s
+.PHONY : src/item.s
+
+# target to generate assembly for a file
+src/item.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/item.cpp.s
+.PHONY : src/item.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -227,6 +251,9 @@ help:
 	@echo "... src/fileLoader.o"
 	@echo "... src/fileLoader.i"
 	@echo "... src/fileLoader.s"
+	@echo "... src/item.o"
+	@echo "... src/item.i"
+	@echo "... src/item.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

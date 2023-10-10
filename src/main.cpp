@@ -1,12 +1,15 @@
 #include <iostream>
 #include "player.h"
 #include "fileLoader.h"
+#include "item.h"
 
-
+ItemData* swordData = new ItemData{0, "sword", "testSword", 10, 0};
+itemInitializationData.push_back(swordData);
 
 int main()
 {
     Player player;
+    InventoryItem inventory;
 
     bool gameIsRunning = true;
     /*GameLoop*/
@@ -20,6 +23,12 @@ int main()
         std::cout << player.getName() << std::endl;
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
+
+        inventory.addItem(Item(inputHandler));
+        std::cout << inventory.getName(0) << std::endl;
+        inventory.addItem(Item("testItem"));
+        std::cout << inventory.getName(1) << std::endl;
+
         
 
     };
