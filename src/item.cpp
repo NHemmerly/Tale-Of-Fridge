@@ -29,6 +29,17 @@ void InventoryItem::displayInfo(const int& dataIndex)
     inventory[dataIndex].displayInfo();
 }
 
+void InventoryItem::displayItems()
+{
+    if (inventory.size() == 0) {
+        std::cout << "Your Inventory is Empty" << std::endl;
+    }
+    for (int i = 0; i < inventory.size(); i++)
+    {
+        std::cout << i << ". " << inventory[i].getName() << std::endl;
+    }
+}
+
 
 const std::string& Item::getName() const
 {

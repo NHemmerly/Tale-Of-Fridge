@@ -1,7 +1,6 @@
 CMakeFiles/fridgeLibs.dir/src/player.cpp.o: \
- /home/neilh/repos/Tale-Of-Fridge/src/player.cpp \
- /usr/include/stdc-predef.h /home/neilh/repos/Tale-Of-Fridge/src/player.h \
- /usr/include/c++/11/iostream \
+ /home/kneel/repos/taleOfFridge/src/player.cpp /usr/include/stdc-predef.h \
+ /home/kneel/repos/taleOfFridge/src/player.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \

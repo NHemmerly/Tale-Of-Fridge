@@ -25,6 +25,8 @@ int main()
 
         inventory.addItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
         FileLoad::dialogText("textAssets/1/1.txt", inventory.getName(0));
+        inventory.addItem(Item("Potion", "A healing potion", -10, 0));
+        inventory.displayItems();
 
         
 

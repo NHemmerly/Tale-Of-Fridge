@@ -38,12 +38,15 @@ public:
     const int getAttack(const int& dataIndex) const;
     const int getDefense(const int& dataIndex) const;
     void displayInfo(const int& dataIndex);
+    void displayItems();
 
     //Setters
     void setName(int index, const std::string& newName);
     void setDescription(int index, const std::string& newDescription);
     void setAttack(int index, const int& newAttack);
     void setDefense(int index, const int& newDefense);
+
+
 private:
     int dataIndex;
     std::vector<Item> inventory;
