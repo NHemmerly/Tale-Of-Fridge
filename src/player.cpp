@@ -41,3 +41,16 @@ void Player::displayInfo()
     << "\nDefense: " << defenseStat
     << std::endl;
 }
+
+//Delegations
+
+void Player::getAddItem(const Item& item)
+{
+    inventory.addItem(item);
+}
+
+const std::string& Player::getItemName(const int& dataIndex) const
+{
+    return inventory.getName(dataIndex);
+}
+

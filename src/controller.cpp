@@ -41,25 +41,46 @@ void Controller::parseCommand(const std::string& input)
 
     if ( std::find(keyWords.begin(), keyWords.end(), verb) != keyWords.end())
     {
+
         if (verb.compare("menu") == 0)
         {
-            displayMenu();
-        }
+            menuFlow();
+        } 
     }
 
 
 }
 //Privates
 void Controller::displayMenu(){
-    menuOn = true;
     std::cout << "==================================\n" <<
-    "Menu\n" <<
+    "Menu\n" << "Enter a number\n" <<
     "==================================\n";
     for (int i = 0; i < menu.size(); i++)
     {
         std::cout << i << ". " << menu[i] << std::endl;
     }
     std::cout << "==================================\n";
+}
+
+void Controller::parseMenu(const int& input)
+{
+    switch (input)
+    {
+        case 0:
+            
+    }
+}
+
+void Controller::menuFlow(){
+    menuOn = true;
+    int input;
+    displayMenu();
+    while (menuOn)
+    {
+        std::cin >> input;
+        parseMenu(input);
+    }
+
 }
 
 std::vector<std::string> Controller::splitString(const std::string& input)

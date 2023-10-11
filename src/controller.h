@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "item.h"
+#include "player.h"
 
 class Controller {
 public:
@@ -13,11 +15,15 @@ public:
 
 
 private:
+    Player player;
     std::vector<std::string> splitString(const std::string& input);
     void displayMenu();
+    void menuFlow();
+    void parseMenu(const int& input);
     std::vector<std::string> verbs;
     std::vector<std::string> nouns;
     std::vector<std::string> keyWords;
     std::vector<std::string> menu;
+
 
 };
