@@ -2,6 +2,7 @@
 #include "player.h"
 #include "fileLoader.h"
 #include "item.h"
+#include "controller.h"
 
 
 
@@ -9,6 +10,7 @@ int main()
 {
     Player player;
     InventoryItem inventory;
+    Controller controller;
 
     bool gameIsRunning = true;
     /*GameLoop*/
@@ -26,7 +28,8 @@ int main()
         inventory.addItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
         FileLoad::dialogText("textAssets/1/1.txt", inventory.getName(0));
         inventory.addItem(Item("Potion", "A healing potion", -10, 0));
-        inventory.displayItems();
+        std::cin >> inputHandler;
+        controller.parseCommand(inputHandler);
 
         
 

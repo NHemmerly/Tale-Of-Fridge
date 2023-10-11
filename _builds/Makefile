@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kneel/repos/taleOfFridge
+CMAKE_SOURCE_DIR = /home/neilh/repos/Tale-Of-Fridge
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kneel/repos/taleOfFridge/_builds
+CMAKE_BINARY_DIR = /home/neilh/repos/Tale-Of-Fridge/_builds
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kneel/repos/taleOfFridge/_builds/CMakeFiles /home/kneel/repos/taleOfFridge/_builds//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/neilh/repos/Tale-Of-Fridge/_builds/CMakeFiles /home/neilh/repos/Tale-Of-Fridge/_builds//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kneel/repos/taleOfFridge/_builds/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/neilh/repos/Tale-Of-Fridge/_builds/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -141,6 +141,30 @@ taleOfFridge: cmake_check_build_system
 taleOfFridge/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taleOfFridge.dir/build.make CMakeFiles/taleOfFridge.dir/build
 .PHONY : taleOfFridge/fast
+
+src/controller.o: src/controller.cpp.o
+.PHONY : src/controller.o
+
+# target to build an object file
+src/controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.o
+.PHONY : src/controller.cpp.o
+
+src/controller.i: src/controller.cpp.i
+.PHONY : src/controller.i
+
+# target to preprocess a source file
+src/controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.i
+.PHONY : src/controller.cpp.i
+
+src/controller.s: src/controller.cpp.s
+.PHONY : src/controller.s
+
+# target to generate assembly for a file
+src/controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.s
+.PHONY : src/controller.cpp.s
 
 src/fileLoader.o: src/fileLoader.cpp.o
 .PHONY : src/fileLoader.o
@@ -248,6 +272,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... fridgeLibs"
 	@echo "... taleOfFridge"
+	@echo "... src/controller.o"
+	@echo "... src/controller.i"
+	@echo "... src/controller.s"
 	@echo "... src/fileLoader.o"
 	@echo "... src/fileLoader.i"
 	@echo "... src/fileLoader.s"

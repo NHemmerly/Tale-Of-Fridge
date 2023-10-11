@@ -1,7 +1,7 @@
 CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o: \
- /home/kneel/repos/taleOfFridge/src/fileLoader.cpp \
+ /home/neilh/repos/Tale-Of-Fridge/src/fileLoader.cpp \
  /usr/include/stdc-predef.h \
- /home/kneel/repos/taleOfFridge/src/fileLoader.h \
+ /home/neilh/repos/Tale-Of-Fridge/src/fileLoader.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -161,7 +161,7 @@ CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o: \
  /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/kneel/repos/taleOfFridge/src/item.h /usr/include/c++/11/vector \
+ /home/neilh/repos/Tale-Of-Fridge/src/item.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \

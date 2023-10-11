@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/fridgeLibs.dir/src/controller.cpp.o"
+  "CMakeFiles/fridgeLibs.dir/src/controller.cpp.o.d"
   "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o"
   "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o.d"
   "CMakeFiles/fridgeLibs.dir/src/item.cpp.o"
