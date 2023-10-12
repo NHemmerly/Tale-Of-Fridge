@@ -67,7 +67,12 @@ void Controller::parseMenu(const int& input)
     switch (input)
     {
         case 0:
-            
+        {
+            getPlayerInventory();
+            break;
+        }
+        default:
+            break;
     }
 }
 
@@ -105,4 +110,31 @@ std::vector<std::string> Controller::splitString(const std::string& input)
         words.push_back(word);
     }
     return words;
+}
+
+//Delegations
+
+void Controller::getPlayerInventory()
+{
+    player.getDisplayInventory();
+}
+
+void Controller::getSetName(const std::string& newName)
+{
+    player.setName(newName);
+}
+
+const std::string& Controller::getGetName() const 
+{
+    return player.getName();
+}
+
+void Controller::getAddItem(const Item& newItem)
+{
+    player.getAddItem(newItem);
+}
+
+const std::string& Controller::getItemName(const int& dataIndex) const
+{
+    return player.getItemName(dataIndex);
 }

@@ -9,7 +9,6 @@
 int main()
 {
     Controller controller;
-    Player player;
 
     bool gameIsRunning = true;
     /*GameLoop*/
@@ -18,15 +17,15 @@ int main()
         std::string inputHandler;
         FileLoad::writeText("textAssets/story1.txt", 0);
         std::cin >> inputHandler;
-        player.setName(inputHandler);
+        controller.getSetName(inputHandler);
         FileLoad::writeText("textAssets/iRemember.txt", 0); 
-        std::cout << player.getName() << std::endl;
+        std::cout << controller.getGetName() << std::endl;
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
 
-        player.getAddItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
-        FileLoad::dialogText("textAssets/1/1.txt", player.getItemName(0));
-        player.getAddItem(Item("Potion", "A healing potion", -10, 0));
+        controller.getAddItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
+        FileLoad::dialogText("textAssets/1/1.txt", controller.getItemName(0));
+        controller.getAddItem(Item("Potion", "A healing potion", -10, 0));
         std::cin >> inputHandler;
         controller.parseCommand(inputHandler);
 

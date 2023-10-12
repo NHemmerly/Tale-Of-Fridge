@@ -54,3 +54,8 @@ const std::string& Player::getItemName(const int& dataIndex) const
     return inventory.getName(dataIndex);
 }
 
+void Player::getDisplayInventory()
+{
+    inventory.displayItems();
+}
+

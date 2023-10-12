@@ -142,6 +142,30 @@ taleOfFridge/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taleOfFridge.dir/build.make CMakeFiles/taleOfFridge.dir/build
 .PHONY : taleOfFridge/fast
 
+src/controller.o: src/controller.cpp.o
+.PHONY : src/controller.o
+
+# target to build an object file
+src/controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.o
+.PHONY : src/controller.cpp.o
+
+src/controller.i: src/controller.cpp.i
+.PHONY : src/controller.i
+
+# target to preprocess a source file
+src/controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.i
+.PHONY : src/controller.cpp.i
+
+src/controller.s: src/controller.cpp.s
+.PHONY : src/controller.s
+
+# target to generate assembly for a file
+src/controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.s
+.PHONY : src/controller.cpp.s
+
 src/fileLoader.o: src/fileLoader.cpp.o
 .PHONY : src/fileLoader.o
 
@@ -248,6 +272,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... fridgeLibs"
 	@echo "... taleOfFridge"
+	@echo "... src/controller.o"
+	@echo "... src/controller.i"
+	@echo "... src/controller.s"
 	@echo "... src/fileLoader.o"
 	@echo "... src/fileLoader.i"
 	@echo "... src/fileLoader.s"

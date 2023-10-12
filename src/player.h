@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "controller.h"
+#include "item.h"
 
 class Player
 {
@@ -16,6 +16,7 @@ class Player
         void displayInfo();
 
         //Delegations
+        void getDisplayInventory();
         void getDisplayItem();
         void getAddItem(const Item& newItem);
         const std::string& getItemName(const int& dataIndex) const;
