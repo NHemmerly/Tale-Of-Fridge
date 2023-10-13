@@ -2,6 +2,7 @@
 
 //Globals?
 bool menuOn = false;
+bool displayingBag = false;
 
 Controller::Controller()
 {
@@ -68,7 +69,15 @@ void Controller::parseMenu(const int& input)
     {
         case 0:
         {
+            // Bag
             getPlayerInventory();
+            bagFlow();
+            break;
+        }
+        case 4:
+        {
+            // Exit
+            exitMenu();
             break;
         }
         default:
@@ -86,6 +95,32 @@ void Controller::menuFlow(){
         parseMenu(input);
     }
 
+}
+
+void Controller::exitMenu()
+{
+    menuOn = false;
+}
+
+void Controller::exitBag()
+{
+    displayingBag = false;
+    displayMenu();
+}
+
+void Controller::bagFlow()
+{
+    displayingBag = true;
+    int input;
+    int inventorySize = getInventorySize();
+    while(displayingBag)
+    {
+        std::cin >> input;
+        if (input == inventorySize)
+        {
+            exitBag();
+        }
+    }
 }
 
 std::vector<std::string> Controller::splitString(const std::string& input)
@@ -117,6 +152,10 @@ std::vector<std::string> Controller::splitString(const std::string& input)
 void Controller::getPlayerInventory()
 {
     player.getDisplayInventory();
+}
+const int& Controller::getInventorySize() const
+{
+    return player.inventorySize();
 }
 
 void Controller::getSetName(const std::string& newName)

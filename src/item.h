@@ -39,6 +39,7 @@ public:
     const int getDefense(const int& dataIndex) const;
     void displayInfo(const int& dataIndex);
     void displayItems();
+    const int& inventorySize() const;
 
     //Setters
     void setName(int index, const std::string& newName);

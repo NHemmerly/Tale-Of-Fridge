@@ -36,9 +36,17 @@ void InventoryItem::displayItems()
     }
     for (int i = 0; i < inventory.size(); i++)
     {
-        std::cout << i << ". " << inventory[i].getName() << std::endl;
+        std::cout << i << ". " << inventory[i].getName() << "\n";
     }
+    std::cout << inventory.size() << ". Exit" << "\n";
 }
+
+const int& InventoryItem::inventorySize() const
+{
+    const int& inventorySize = inventory.size();
+    return inventorySize;
+}
+
 
 
 const std::string& Item::getName() const

@@ -59,3 +59,8 @@ void Player::getDisplayInventory()
     inventory.displayItems();
 }
 
+const int& Player::inventorySize() const
+{
+    return inventory.inventorySize();
+}
+

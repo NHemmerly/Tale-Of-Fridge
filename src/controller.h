@@ -23,6 +23,9 @@ private:
     std::vector<std::string> splitString(const std::string& input);
     void displayMenu();
     void menuFlow();
+    void exitMenu();
+    void bagFlow();
+    void exitBag();
     void parseMenu(const int& input);
     std::vector<std::string> verbs;
     std::vector<std::string> nouns;
@@ -30,6 +33,7 @@ private:
     std::vector<std::string> menu;
     //Delegations
     Player player;
+    const int& getInventorySize() const;
 
 
 };
