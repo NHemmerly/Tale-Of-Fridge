@@ -21,6 +21,7 @@ class Player
         void getAddItem(const Item& newItem);
         const std::string& getItemName(const int& dataIndex) const;
         const int& inventorySize() const;
+        void getDisplayItem(const int& dataIndex);
 
     private:
         std::string name;

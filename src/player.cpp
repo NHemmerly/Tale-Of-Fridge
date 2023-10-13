@@ -64,3 +64,8 @@ const int& Player::inventorySize() const
     return inventory.inventorySize();
 }
 
+void Player::getDisplayItem(const int& dataIndex)
+{
+    inventory.displayInfo(dataIndex);
+}
+

@@ -119,6 +119,12 @@ void Controller::bagFlow()
         if (input == inventorySize)
         {
             exitBag();
+        } else if (input > inventorySize)
+        {
+            std::cout << "Please enter a valid item#" << "\n";
+        } else 
+        {
+            getDisplayInfo(input);
         }
     }
 }
@@ -176,4 +182,9 @@ void Controller::getAddItem(const Item& newItem)
 const std::string& Controller::getItemName(const int& dataIndex) const
 {
     return player.getItemName(dataIndex);
+}
+
+void Controller::getDisplayInfo(const int& dataIndex)
+{
+    player.getDisplayItem(dataIndex);
 }

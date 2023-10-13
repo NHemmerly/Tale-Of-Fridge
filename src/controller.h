@@ -34,6 +34,7 @@ private:
     //Delegations
     Player player;
     const int& getInventorySize() const;
+    void getDisplayInfo(const int& dataIndex);
 
 
 };
