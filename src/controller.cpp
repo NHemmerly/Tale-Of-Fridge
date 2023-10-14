@@ -88,10 +88,25 @@ void Controller::parseMenu(const int& input)
 void Controller::menuFlow(){
     menuOn = true;
     int input;
+    std::string inputStr;  
     displayMenu();
     while (menuOn)
     {
-        std::cin >> input;
+        std::cin >> inputStr;
+        try 
+        {
+            //Attempt to convert input string to integer
+            input = std::stoi(inputStr);
+        } catch (const std::invalid_argument&)
+        {
+            std::cerr << "Please enter a number" << "\n";
+        }
+        if (input > menu.size() - 1 || input < 0)
+        {
+            std::cout << "Please enter one of the numbers above" << "\n";
+            continue;
+        }
+
         parseMenu(input);
     }
 

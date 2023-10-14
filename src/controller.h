@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <typeinfo>
 #include "item.h"
 #include "player.h"
 
