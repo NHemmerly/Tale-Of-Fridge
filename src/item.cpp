@@ -71,11 +71,13 @@ const int Item::getDefense() const
 
 void Item::displayInfo()
 {
-    std::cout << "\n" << name << "\n" <<
-    "===================================================\n" << 
+    std::cout <<"==================================\n" <<
+    name << "\n" <<
+    "==================================\n" << 
     "Description: " << description << "\n" <<
     "Attack: " << attack << "\n" << 
-    "Defense: " << defense << std::endl;
+    "Defense: " << defense << "\n" <<
+    "0. exit" << "\n";
 }
 
 //Adders

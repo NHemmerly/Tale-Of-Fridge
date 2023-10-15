@@ -3,6 +3,7 @@
 //Globals?
 bool menuOn = false;
 bool displayingBag = false;
+bool displayingItem = false;
 
 Controller::Controller()
 {
@@ -123,6 +124,13 @@ void Controller::exitBag()
     displayMenu();
 }
 
+void Controller::exitItem()
+{
+    displayingItem = false;
+    getPlayerInventory();
+
+}
+
 void Controller::bagFlow()
 {
     displayingBag = true;
@@ -140,7 +148,35 @@ void Controller::bagFlow()
         } else 
         {
             getDisplayInfo(input);
+            itemFlow();
         }
+    }
+}
+
+void Controller::itemFlow()
+{
+    displayingItem = true;
+    int input;
+    std::string inputString;
+    while(displayingItem)
+    {
+        std::cin >> inputString;
+        try 
+        {
+            //Attempt to convert input string to integer
+            input = std::stoi(inputString);
+        } catch (const std::invalid_argument&)
+        {
+            std::cerr << "Type 0 to exit" << "\n";
+        }
+        if (input == 0)
+        {
+            exitItem();
+        } else
+        {
+            std::cout << "Type 0 to exit" << "\n";
+        }
+        
     }
 }
 
@@ -172,6 +208,9 @@ std::vector<std::string> Controller::splitString(const std::string& input)
 
 void Controller::getPlayerInventory()
 {
+    std::cout << "==================================\n" <<
+    "bag\n" <<
+    "==================================\n";
     player.getDisplayInventory();
 }
 const int& Controller::getInventorySize() const
