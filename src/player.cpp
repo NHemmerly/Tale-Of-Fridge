@@ -35,11 +35,15 @@ const int& Player::getDefense() const
 
 void Player::displayInfo()
 {
-    std::cout << "Name: " << name
+    std::cout << "==================================\n"
+    << name
+    << "\n=================================="
     << "\nHealth: " << health
     << "\nAttack: " << attackStat
     << "\nDefense: " << defenseStat
-    << std::endl;
+    << "\n0. exit\n"
+    << "=================================="
+    << "\n";
 }
 
 //Delegations

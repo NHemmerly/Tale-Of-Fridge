@@ -4,6 +4,7 @@
 bool menuOn = false;
 bool displayingBag = false;
 bool displayingItem = false;
+bool displayingStatus = false;
 
 Controller::Controller()
 {
@@ -75,6 +76,12 @@ void Controller::parseMenu(const int& input)
             bagFlow();
             break;
         }
+        case 2:
+        {
+            getShowStatus();
+            statusFlow();
+            break;
+        }
         case 4:
         {
             // Exit
@@ -120,7 +127,12 @@ void Controller::exitItem()
 {
     displayingItem = false;
     getPlayerInventory();
+}
 
+void Controller::exitStatus()
+{
+    displayingStatus = false;
+    displayMenu();
 }
 
 void Controller::bagFlow()
@@ -162,6 +174,25 @@ void Controller::itemFlow()
             continue;
         }
         exitItem();
+        
+    }
+}
+
+void Controller::statusFlow()
+{
+    int input;
+    std::string inputString;
+    displayingStatus = true;
+    while(displayingStatus)
+    {
+        std::cin >> inputString;
+        input = convertInt(inputString);
+        if (input != 0)
+        {
+            std::cout << "Type 0 to exit" << "\n";
+            continue;
+        }
+        exitStatus();
         
     }
 }
@@ -227,6 +258,11 @@ const std::string& Controller::getItemName(const int& dataIndex) const
 void Controller::getDisplayInfo(const int& dataIndex)
 {
     player.getDisplayItem(dataIndex);
+}
+
+void Controller::getShowStatus()
+{
+    player.displayInfo();
 }
 
 //Utility

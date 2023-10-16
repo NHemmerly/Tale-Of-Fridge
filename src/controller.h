@@ -29,6 +29,8 @@ private:
     void exitBag();
     void itemFlow();
     void exitItem();
+    void statusFlow();
+    void exitStatus();
     int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
     std::vector<std::string> verbs;
@@ -39,6 +41,7 @@ private:
     Player player;
     const int& getInventorySize() const;
     void getDisplayInfo(const int& dataIndex);
+    void getShowStatus();
 
 
 };
