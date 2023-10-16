@@ -29,6 +29,7 @@ private:
     void exitBag();
     void itemFlow();
     void exitItem();
+    int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
     std::vector<std::string> verbs;
     std::vector<std::string> nouns;

@@ -94,20 +94,12 @@ void Controller::menuFlow(){
     while (menuOn)
     {
         std::cin >> inputStr;
-        try 
-        {
-            //Attempt to convert input string to integer
-            input = std::stoi(inputStr);
-        } catch (const std::invalid_argument&)
-        {
-            std::cerr << "Please enter a number" << "\n";
-        }
+        input = convertInt(inputStr);
         if (input > menu.size() - 1 || input < 0)
         {
             std::cout << "Please enter one of the numbers above" << "\n";
             continue;
         }
-
         parseMenu(input);
     }
 
@@ -135,10 +127,12 @@ void Controller::bagFlow()
 {
     displayingBag = true;
     int input;
+    std::string inputStr;
     int inventorySize = getInventorySize();
     while(displayingBag)
     {
-        std::cin >> input;
+        std::cin >> inputStr;
+        input = convertInt(inputStr);
         if (input == inventorySize)
         {
             exitBag();
@@ -155,27 +149,19 @@ void Controller::bagFlow()
 
 void Controller::itemFlow()
 {
-    displayingItem = true;
     int input;
     std::string inputString;
+    displayingItem = true;
     while(displayingItem)
     {
         std::cin >> inputString;
-        try 
-        {
-            //Attempt to convert input string to integer
-            input = std::stoi(inputString);
-        } catch (const std::invalid_argument&)
-        {
-            std::cerr << "Type 0 to exit" << "\n";
-        }
-        if (input == 0)
-        {
-            exitItem();
-        } else
+        input = convertInt(inputString);
+        if (input != 0)
         {
             std::cout << "Type 0 to exit" << "\n";
+            continue;
         }
+        exitItem();
         
     }
 }
@@ -241,4 +227,20 @@ const std::string& Controller::getItemName(const int& dataIndex) const
 void Controller::getDisplayInfo(const int& dataIndex)
 {
     player.getDisplayItem(dataIndex);
+}
+
+//Utility
+int Controller::convertInt(const std::string& inputStr)
+{
+    int input;
+    try 
+    {
+        //Attempt to convert input string to integer
+        input = std::stoi(inputStr);
+    } catch (const std::invalid_argument&)
+    {
+        std::cerr << "Please enter a number" << "\n";
+        return 999;
+    }
+    return input;
 }
