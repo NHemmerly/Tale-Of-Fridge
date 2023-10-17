@@ -2,18 +2,12 @@
 
 #include <iostream>
 #include "item.h"
+#include "entity.h"
 
-class Player
+class Player : public Entity
 {
     public:
         Player();
-
-        const std::string& getName() const;
-        const int& getHP() const;
-        const int& getAttack() const;
-        const int& getDefense() const;
-        void setName(const std::string& name);
-        void displayInfo();
 
         //Delegations
         void getDisplayInventory();
@@ -22,11 +16,4 @@ class Player
         const std::string& getItemName(const int& dataIndex) const;
         const int& inventorySize() const;
         void getDisplayItem(const int& dataIndex);
-
-    private:
-        std::string name;
-        int health = 100;
-        int attackStat = 1;
-        int defenseStat = 1;
-        InventoryItem inventory;
 };
