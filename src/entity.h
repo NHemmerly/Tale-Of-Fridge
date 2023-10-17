@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-#include "item.h"
+#include "usables.h"
 
 class Entity
 {
@@ -14,6 +14,14 @@ public:
     const int& getDefense() const;
     void setName(const std::string& name);
     void displayInfo();
+    void useItem(const int& dataIndex);
+
+    void getDisplayInventory();
+    void getDisplayItem();
+    void getAddItem(const Item& newItem);
+    const std::string& getItemName(const int& dataIndex) const;
+    const int& inventorySize() const;
+    void getDisplayItem(const int& dataIndex);
 
 protected:
     std::string name;

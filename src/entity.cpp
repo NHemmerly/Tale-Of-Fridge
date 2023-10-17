@@ -37,3 +37,38 @@ void Entity::displayInfo()
     << "=================================="
     << "\n";
 }
+
+//Delegations
+
+void Entity::getAddItem(const Item& item)
+{
+    inventory.addItem(item);
+}
+
+const std::string& Entity::getItemName(const int& dataIndex) const
+{
+    return inventory.getName(dataIndex);
+}
+
+void Entity::getDisplayInventory()
+{
+    inventory.displayItems();
+}
+
+const int& Entity::inventorySize() const
+{
+    return inventory.inventorySize();
+}
+
+void Entity::getDisplayItem(const int& dataIndex)
+{
+    inventory.displayInfo(dataIndex);
+}
+
+void Entity::useItem(const int& dataIndex)
+{
+    std::cout << "Used 1 " << getItemName(dataIndex) << "\n";
+    health = health + inventory.getAttack(dataIndex);
+    inventory.removeItem(dataIndex);
+    std::cout << health << "\n";
+}

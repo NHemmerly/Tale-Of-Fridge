@@ -77,14 +77,22 @@ void Item::displayInfo()
     "Description: " << description << "\n" <<
     "Attack: " << attack << "\n" << 
     "Defense: " << defense << "\n" <<
-    "0. exit" << "\n";
+    "0. use" <<  "\n" <<
+    "1. exit" << "\n";
 }
 
-//Adders
+//Adders and Removers
 
 void InventoryItem::addItem(const Item& newItem)
 {
     inventory.push_back(newItem);
+}
+
+void InventoryItem::removeItem(const int& dataIndex)
+{
+    inventory.erase(inventory.begin() + dataIndex);
+    std::vector<Item>(inventory).swap(inventory);
+
 }
 
 

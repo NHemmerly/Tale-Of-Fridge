@@ -146,14 +146,14 @@ void Controller::bagFlow()
             std::cout << "Please enter a valid item#" << "\n";
         } else 
         {
-            getDisplayInfo(input);
-            itemFlow();
+            itemFlow(input);
         }
     }
 }
 
-void Controller::itemFlow()
+void Controller::itemFlow(const int& dataIndex)
 {
+    getDisplayInfo(dataIndex);
     int input;
     std::string inputString;
     displayingItem = true;
@@ -161,10 +161,13 @@ void Controller::itemFlow()
     {
         std::cin >> inputString;
         input = convertInt(inputString);
-        if (input != 0)
+        if (input != 0 && input != 1)
         {
             std::cout << "Type 0 to exit" << "\n";
             continue;
+        } else if (input == 0)
+        {
+            player.useItem(dataIndex);
         }
         exitItem();
         

@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <typeinfo>
-#include "item.h"
+#include "usables.h"
 #include "player.h"
 
 class Controller {
@@ -27,7 +27,7 @@ private:
     void exitMenu();
     void bagFlow();
     void exitBag();
-    void itemFlow();
+    void itemFlow(const int& dataIndex);
     void exitItem();
     void statusFlow();
     void exitStatus();

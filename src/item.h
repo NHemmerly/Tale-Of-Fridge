@@ -19,7 +19,7 @@ public:
 
     //Setters
     void setName(const std::string& newName);
-private:
+protected:
     std::string name;
     std::string description;
     int attack;
@@ -31,6 +31,7 @@ public:
     InventoryItem();
 
     void addItem(const Item& newItem);
+    void removeItem(const int& dataIndex);
 
     //Getters
     const std::string& getName(const int& dataIndex) const;
@@ -48,7 +49,7 @@ public:
     void setDefense(int index, const int& newDefense);
 
 
-private:
+protected:
     int dataIndex;
     std::vector<Item> inventory;
 };
