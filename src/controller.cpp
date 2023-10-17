@@ -2,9 +2,8 @@
 
 //Globals?
 bool menuOn = false;
-bool displayingBag = false;
+bool displaying = false;
 bool displayingItem = false;
-bool displayingStatus = false;
 
 Controller::Controller()
 {
@@ -117,12 +116,6 @@ void Controller::exitMenu()
     menuOn = false;
 }
 
-void Controller::exitBag()
-{
-    displayingBag = false;
-    displayMenu();
-}
-
 void Controller::exitItem()
 {
     displayingItem = false;
@@ -131,23 +124,23 @@ void Controller::exitItem()
 
 void Controller::exitStatus()
 {
-    displayingStatus = false;
+    displaying = false;
     displayMenu();
 }
 
 void Controller::bagFlow()
 {
-    displayingBag = true;
+    displaying = true;
     int input;
     std::string inputStr;
     int inventorySize = getInventorySize();
-    while(displayingBag)
+    while(displaying)
     {
         std::cin >> inputStr;
         input = convertInt(inputStr);
         if (input == inventorySize)
         {
-            exitBag();
+            exitStatus();
         } else if (input > inventorySize)
         {
             std::cout << "Please enter a valid item#" << "\n";
@@ -182,8 +175,8 @@ void Controller::statusFlow()
 {
     int input;
     std::string inputString;
-    displayingStatus = true;
-    while(displayingStatus)
+    displaying = true;
+    while(displaying)
     {
         std::cin >> inputString;
         input = convertInt(inputString);
