@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <memory>
 
 class Item {
 public:
@@ -30,7 +31,7 @@ class InventoryItem {
 public:
     InventoryItem();
 
-    void addItem(const Item& newItem);
+    void addItem(const std::string& name, const std::string& description, int attack, int defense);
     void removeItem(const int& dataIndex);
 
     //Getters
@@ -51,7 +52,7 @@ public:
 
 protected:
     int dataIndex;
-    std::vector<Item> inventory;
+    std::vector<std::shared_ptr<Item>> inventory;
 };
 
 

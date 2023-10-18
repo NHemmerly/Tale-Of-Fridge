@@ -23,10 +23,10 @@ int main()
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
 
-        controller.getAddItem(Item(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0));
+        controller.getAddItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0);
         FileLoad::dialogText("textAssets/1/1.txt", controller.getItemName(0));
-        controller.getAddItem(Item("Potion", "A healing potion", -10, 0));
-        controller.getAddItem(Item("Pain", "Owie ouch ow", 20, 0));
+        controller.getAddItem("Potion", "A healing potion", -10, 0);
+        controller.getAddItem("Pain", "Owie ouch ow", 20, 0);
         std::cin >> inputHandler;
         controller.parseCommand(inputHandler);
 

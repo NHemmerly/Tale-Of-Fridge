@@ -17,7 +17,7 @@ public:
     void getSetName(const std::string& newName);
     const std::string& getGetName() const;
     void getPlayerInventory();
-    void getAddItem(const Item& newItem);
+    void getAddItem(const std::string& name, const std::string& description, int attack, int defense);
     const std::string& getItemName(const int& dataIndex) const;
 
 private:

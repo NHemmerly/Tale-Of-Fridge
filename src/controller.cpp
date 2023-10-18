@@ -133,15 +133,14 @@ void Controller::bagFlow()
     displaying = true;
     int input;
     std::string inputStr;
-    int inventorySize = getInventorySize();
     while(displaying)
     {
         std::cin >> inputStr;
         input = convertInt(inputStr);
-        if (input == inventorySize)
+        if (input == getInventorySize())
         {
             exitStatus();
-        } else if (input > inventorySize)
+        } else if (input > getInventorySize())
         {
             std::cout << "Please enter a valid item#" << "\n";
         } else 
@@ -241,9 +240,9 @@ const std::string& Controller::getGetName() const
     return player.getName();
 }
 
-void Controller::getAddItem(const Item& newItem)
+void Controller::getAddItem(const std::string& name, const std::string& description, int attack, int defense)
 {
-    player.getAddItem(newItem);
+    player.getAddItem(name, description, attack, defense);
 }
 
 const std::string& Controller::getItemName(const int& dataIndex) const

@@ -40,9 +40,9 @@ void Entity::displayInfo()
 
 //Delegations
 
-void Entity::getAddItem(const Item& item)
+void Entity::getAddItem(const std::string& name, const std::string& description, int attack, int defense)
 {
-    inventory.addItem(item);
+    inventory.addItem(name, description, attack, defense);
 }
 
 const std::string& Entity::getItemName(const int& dataIndex) const

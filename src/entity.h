@@ -18,7 +18,7 @@ public:
 
     void getDisplayInventory();
     void getDisplayItem();
-    void getAddItem(const Item& newItem);
+    void getAddItem(const std::string& name, const std::string& description, int attack, int defense);
     const std::string& getItemName(const int& dataIndex) const;
     const int& inventorySize() const;
     void getDisplayItem(const int& dataIndex);

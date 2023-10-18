@@ -166,6 +166,30 @@ src/controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
 
+src/entity.o: src/entity.cpp.o
+.PHONY : src/entity.o
+
+# target to build an object file
+src/entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/entity.cpp.o
+.PHONY : src/entity.cpp.o
+
+src/entity.i: src/entity.cpp.i
+.PHONY : src/entity.i
+
+# target to preprocess a source file
+src/entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/entity.cpp.i
+.PHONY : src/entity.cpp.i
+
+src/entity.s: src/entity.cpp.s
+.PHONY : src/entity.s
+
+# target to generate assembly for a file
+src/entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/entity.cpp.s
+.PHONY : src/entity.cpp.s
+
 src/fileLoader.o: src/fileLoader.cpp.o
 .PHONY : src/fileLoader.o
 
@@ -275,6 +299,9 @@ help:
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"
+	@echo "... src/entity.o"
+	@echo "... src/entity.i"
+	@echo "... src/entity.s"
 	@echo "... src/fileLoader.o"
 	@echo "... src/fileLoader.i"
 	@echo "... src/fileLoader.s"
