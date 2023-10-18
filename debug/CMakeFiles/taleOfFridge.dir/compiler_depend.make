@@ -181,8 +181,8 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  ../src/player.h \
-  ../src/entity.h \
+  ../includes/player.h \
+  ../includes/entity.h \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
@@ -208,13 +208,13 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
-  ../src/usables.h \
-  ../src/item.h \
+  ../includes/usables.h \
+  ../includes/item.h \
   /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
-  ../src/fileLoader.h \
+  ../includes/fileLoader.h \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/bits/codecvt.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
@@ -228,7 +228,7 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/11/thread \
   /usr/include/c++/11/bits/std_thread.h \
   /usr/include/c++/11/bits/this_thread_sleep.h \
-  ../src/controller.h \
+  ../includes/controller.h \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/bits/stl_algo.h \
   /usr/include/c++/11/bits/algorithmfwd.h \
@@ -250,6 +250,8 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/c++/11/bits/enable_special_members.h:
 
+/usr/include/c++/11/bits/hashtable_policy.h:
+
 /usr/include/c++/11/bits/hashtable.h:
 
 /usr/include/c++/11/bits/stl_heap.h:
@@ -257,6 +259,8 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/include/c++/11/bits/algorithmfwd.h:
 
 /usr/include/c++/11/bits/stl_algo.h:
+
+../includes/controller.h:
 
 /usr/include/c++/11/bits/std_thread.h:
 
@@ -270,17 +274,11 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
-../src/fileLoader.h:
-
 /usr/include/c++/11/bits/vector.tcc:
 
 /usr/include/c++/11/bits/stl_bvector.h:
 
-../src/item.h:
-
-/usr/include/c++/11/bits/hashtable_policy.h:
-
-../src/usables.h:
+../includes/item.h:
 
 /usr/include/c++/11/bits/parse_numbers.h:
 
@@ -306,7 +304,7 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/c++/11/memory:
 
-../src/player.h:
+../includes/entity.h:
 
 /usr/include/c++/11/bits/istream.tcc:
 
@@ -396,8 +394,6 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/ctype.h:
 
-../src/controller.h:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
 
 /usr/include/c++/11/initializer_list:
@@ -466,9 +462,13 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
+../includes/fileLoader.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+../includes/player.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
@@ -634,6 +634,8 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
+../includes/usables.h:
+
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
@@ -693,8 +695,6 @@ CMakeFiles/taleOfFridge.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/include/c++/11/bits/shared_ptr_base.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-../src/entity.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
 

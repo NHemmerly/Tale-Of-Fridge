@@ -1,2 +1,2 @@
-/usr/bin/ar qc libfridgeLibs.a CMakeFiles/fridgeLibs.dir/src/player.cpp.o CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o CMakeFiles/fridgeLibs.dir/src/item.cpp.o CMakeFiles/fridgeLibs.dir/src/controller.cpp.o CMakeFiles/fridgeLibs.dir/src/entity.cpp.o
+/usr/bin/ar qc libfridgeLibs.a CMakeFiles/fridgeLibs.dir/src/player.cpp.o CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o CMakeFiles/fridgeLibs.dir/src/item.cpp.o CMakeFiles/fridgeLibs.dir/src/controller.cpp.o CMakeFiles/fridgeLibs.dir/src/entity.cpp.o CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o
 /usr/bin/ranlib libfridgeLibs.a

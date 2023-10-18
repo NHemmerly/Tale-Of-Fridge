@@ -15,6 +15,8 @@ add_library(fridgeLibs
     src/controller.cpp
     includes/entity.h 
     src/entity.cpp 
+    includes/weapons.h 
+    src/weapons.cpp 
 )
 
 add_executable(taleOfFridge src/main.cpp)

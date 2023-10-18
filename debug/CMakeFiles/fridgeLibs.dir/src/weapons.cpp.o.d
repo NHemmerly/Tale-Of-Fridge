@@ -1,5 +1,7 @@
-CMakeFiles/fridgeLibs.dir/src/item.cpp.o: \
- /home/neilh/repos/Tale-Of-Fridge/src/item.cpp /usr/include/stdc-predef.h \
+CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o: \
+ /home/neilh/repos/Tale-Of-Fridge/src/weapons.cpp \
+ /usr/include/stdc-predef.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/weapons.h \
  /home/neilh/repos/Tale-Of-Fridge/includes/item.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -169,5 +171,4 @@ CMakeFiles/fridgeLibs.dir/src/item.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h \
- /home/neilh/repos/Tale-Of-Fridge/includes/weapons.h
+ /usr/include/c++/11/pstl/execution_defs.h

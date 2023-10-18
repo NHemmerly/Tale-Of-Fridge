@@ -139,13 +139,28 @@ CMakeFiles/fridgeLibs.dir/src/entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fridgeLibs.dir/src/entity.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/neilh/repos/Tale-Of-Fridge/src/entity.cpp -o CMakeFiles/fridgeLibs.dir/src/entity.cpp.s
 
+CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o: CMakeFiles/fridgeLibs.dir/flags.make
+CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o: ../src/weapons.cpp
+CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o: CMakeFiles/fridgeLibs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o -MF CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o.d -o CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o -c /home/neilh/repos/Tale-Of-Fridge/src/weapons.cpp
+
+CMakeFiles/fridgeLibs.dir/src/weapons.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fridgeLibs.dir/src/weapons.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/neilh/repos/Tale-Of-Fridge/src/weapons.cpp > CMakeFiles/fridgeLibs.dir/src/weapons.cpp.i
+
+CMakeFiles/fridgeLibs.dir/src/weapons.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fridgeLibs.dir/src/weapons.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/neilh/repos/Tale-Of-Fridge/src/weapons.cpp -o CMakeFiles/fridgeLibs.dir/src/weapons.cpp.s
+
 # Object files for target fridgeLibs
 fridgeLibs_OBJECTS = \
 "CMakeFiles/fridgeLibs.dir/src/player.cpp.o" \
 "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o" \
 "CMakeFiles/fridgeLibs.dir/src/item.cpp.o" \
 "CMakeFiles/fridgeLibs.dir/src/controller.cpp.o" \
-"CMakeFiles/fridgeLibs.dir/src/entity.cpp.o"
+"CMakeFiles/fridgeLibs.dir/src/entity.cpp.o" \
+"CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o"
 
 # External object files for target fridgeLibs
 fridgeLibs_EXTERNAL_OBJECTS =
@@ -155,9 +170,10 @@ libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o
 libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/src/item.cpp.o
 libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/src/controller.cpp.o
 libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/src/entity.cpp.o
+libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o
 libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/build.make
 libfridgeLibs.a: CMakeFiles/fridgeLibs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libfridgeLibs.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libfridgeLibs.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/fridgeLibs.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fridgeLibs.dir/link.txt --verbose=$(VERBOSE)
 

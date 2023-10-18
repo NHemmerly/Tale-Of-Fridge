@@ -263,9 +263,9 @@ const std::string& Controller::getGetName() const
     return player.getName();
 }
 
-void Controller::getAddItem(const std::string& name, const std::string& description, int attack, int defense)
+void Controller::getAddItem(const std::string& name, const std::string& description, int attack, int defense, int flag)
 {
-    player.getAddItem(name, description, attack, defense);
+    player.getAddItem(name, description, attack, defense, flag);
 }
 
 const std::string& Controller::getItemName(const int& dataIndex) const

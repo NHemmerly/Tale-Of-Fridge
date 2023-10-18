@@ -19,7 +19,7 @@ public:
     void getSetName(const std::string& newName);
     const std::string& getGetName() const;
     void getPlayerInventory();
-    void getAddItem(const std::string& name, const std::string& description, int attack, int defense);
+    void getAddItem(const std::string& name, const std::string& description, int attack, int defense, int flag = 0);
     const std::string& getItemName(const int& dataIndex) const;
     bool getGameState();
 

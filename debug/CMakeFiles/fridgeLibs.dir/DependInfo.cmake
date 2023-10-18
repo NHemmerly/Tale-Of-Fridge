@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/neilh/repos/Tale-Of-Fridge/src/fileLoader.cpp" "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/fileLoader.cpp.o.d"
   "/home/neilh/repos/Tale-Of-Fridge/src/item.cpp" "CMakeFiles/fridgeLibs.dir/src/item.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/item.cpp.o.d"
   "/home/neilh/repos/Tale-Of-Fridge/src/player.cpp" "CMakeFiles/fridgeLibs.dir/src/player.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/player.cpp.o.d"
+  "/home/neilh/repos/Tale-Of-Fridge/src/weapons.cpp" "CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o" "gcc" "CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -1,5 +1,5 @@
 #include "item.h"
-
+#include "weapons.h"
 InventoryItem::InventoryItem()
 {
     this->inventory = inventory;
@@ -83,10 +83,16 @@ void Item::displayInfo()
 
 //Adders and Removers
 
-void InventoryItem::addItem(const std::string& name, const std::string& description, int attack, int defense)
+void InventoryItem::addItem(const std::string& name, const std::string& description, int attack, int defense, int flag)
 {
     // inventory.push_back(newItem);
-    inventory.push_back(std::make_shared<Item>(name, description, attack, defense));
+    if (flag == 0)
+    {
+        inventory.push_back(std::make_shared<Item>(name, description, attack, defense));
+    } else if (flag == 1) 
+    {
+        inventory.push_back(std::make_shared<Weapon>(name, description, attack, defense));
+    }
 
 }
 

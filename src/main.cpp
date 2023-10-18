@@ -26,7 +26,7 @@ int main()
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
 
-        game->getAddItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0);
+        game->getAddItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
         FileLoad::dialogText("textAssets/1/1.txt", game->getItemName(0));
         game->getAddItem("Potion", "A healing potion", -10, 0);
         game->getAddItem("Pain", "Owie ouch ow", 20, 0);

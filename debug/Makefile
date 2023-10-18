@@ -286,6 +286,30 @@ src/player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
+src/weapons.o: src/weapons.cpp.o
+.PHONY : src/weapons.o
+
+# target to build an object file
+src/weapons.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o
+.PHONY : src/weapons.cpp.o
+
+src/weapons.i: src/weapons.cpp.i
+.PHONY : src/weapons.i
+
+# target to preprocess a source file
+src/weapons.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/weapons.cpp.i
+.PHONY : src/weapons.cpp.i
+
+src/weapons.s: src/weapons.cpp.s
+.PHONY : src/weapons.s
+
+# target to generate assembly for a file
+src/weapons.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fridgeLibs.dir/build.make CMakeFiles/fridgeLibs.dir/src/weapons.cpp.s
+.PHONY : src/weapons.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -314,6 +338,9 @@ help:
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
+	@echo "... src/weapons.o"
+	@echo "... src/weapons.i"
+	@echo "... src/weapons.s"
 .PHONY : help
 
 

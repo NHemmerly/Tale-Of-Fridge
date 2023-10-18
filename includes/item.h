@@ -16,7 +16,7 @@ public:
     const std::string& getDescription() const;
     const int getAttack() const;
     const int getDefense() const;
-    void displayInfo();
+    virtual void displayInfo();
 
     //Setters
     void setName(const std::string& newName);
@@ -31,7 +31,7 @@ class InventoryItem {
 public:
     InventoryItem();
 
-    void addItem(const std::string& name, const std::string& description, int attack, int defense);
+    void addItem(const std::string& name, const std::string& description, int attack, int defense, int flag = 0);
     void removeItem(const int& dataIndex);
 
     //Getters

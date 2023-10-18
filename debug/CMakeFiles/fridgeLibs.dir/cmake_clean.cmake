@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/fridgeLibs.dir/src/item.cpp.o.d"
   "CMakeFiles/fridgeLibs.dir/src/player.cpp.o"
   "CMakeFiles/fridgeLibs.dir/src/player.cpp.o.d"
+  "CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o"
+  "CMakeFiles/fridgeLibs.dir/src/weapons.cpp.o.d"
   "libfridgeLibs.a"
   "libfridgeLibs.pdb"
 )
