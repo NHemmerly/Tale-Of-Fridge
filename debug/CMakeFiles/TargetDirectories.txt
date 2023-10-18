@@ -1,0 +1,4 @@
+/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles/fridgeLibs.dir
+/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles/taleOfFridge.dir
+/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles/edit_cache.dir
+/home/neilh/repos/Tale-Of-Fridge/debug/CMakeFiles/rebuild_cache.dir

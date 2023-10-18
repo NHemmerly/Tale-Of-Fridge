@@ -55,7 +55,7 @@ void Entity::getDisplayInventory()
     inventory.displayItems();
 }
 
-const int& Entity::inventorySize() const
+int Entity::inventorySize()
 {
     return inventory.inventorySize();
 }

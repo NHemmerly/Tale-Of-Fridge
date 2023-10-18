@@ -21,9 +21,15 @@ Controller::Controller()
     };
     this->menu = 
     {
-        "bag", "use", "status", "save", "exit" 
+        "bag", "use", "status", "save", "exit", "quit" 
     };
 }
+
+std::shared_ptr<Controller> Controller::createInstance()
+{
+    return std::make_shared<Controller>();
+}
+
 
 //Publix
 void Controller::parseCommand(const std::string& input)
@@ -87,15 +93,31 @@ void Controller::parseMenu(const int& input)
             exitMenu();
             break;
         }
+        case 5:
+        {
+            quitGame();
+            break;
+        }
         default:
             break;
     }
 }
 
+bool Controller::getGameState()
+{
+    return gameState;
+}
+
+void Controller::quitGame()
+{
+    menuOn = false;
+    gameState = false;
+}
+
 void Controller::menuFlow(){
     menuOn = true;
-    int input;
-    std::string inputStr;  
+    int input = 0;
+    std::string inputStr = "";  
     displayMenu();
     while (menuOn)
     {
@@ -131,16 +153,17 @@ void Controller::exitStatus()
 void Controller::bagFlow()
 {
     displaying = true;
-    int input;
-    std::string inputStr;
+    int input = 0;
+    std::string inputStr = "";
     while(displaying)
     {
+        int inventorySize = getInventorySize();
         std::cin >> inputStr;
         input = convertInt(inputStr);
-        if (input == getInventorySize())
+        if (input == inventorySize)
         {
             exitStatus();
-        } else if (input > getInventorySize())
+        } else if (input > inventorySize)
         {
             std::cout << "Please enter a valid item#" << "\n";
         } else 
@@ -153,8 +176,8 @@ void Controller::bagFlow()
 void Controller::itemFlow(const int& dataIndex)
 {
     getDisplayInfo(dataIndex);
-    int input;
-    std::string inputString;
+    int input = 0;
+    std::string inputString = "";
     displayingItem = true;
     while(displayingItem)
     {
@@ -175,8 +198,8 @@ void Controller::itemFlow(const int& dataIndex)
 
 void Controller::statusFlow()
 {
-    int input;
-    std::string inputString;
+    int input = 0;
+    std::string inputString = "";
     displaying = true;
     while(displaying)
     {
@@ -225,7 +248,7 @@ void Controller::getPlayerInventory()
     "==================================\n";
     player.getDisplayInventory();
 }
-const int& Controller::getInventorySize() const
+int Controller::getInventorySize()
 {
     return player.inventorySize();
 }

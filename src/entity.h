@@ -2,8 +2,10 @@
 
 #include <string>
 #include <iostream>
+#include <memory>
 
 #include "usables.h"
+
 
 class Entity
 {
@@ -20,7 +22,7 @@ public:
     void getDisplayItem();
     void getAddItem(const std::string& name, const std::string& description, int attack, int defense);
     const std::string& getItemName(const int& dataIndex) const;
-    const int& inventorySize() const;
+    int inventorySize();
     void getDisplayItem(const int& dataIndex);
 
 protected:

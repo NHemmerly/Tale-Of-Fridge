@@ -41,9 +41,9 @@ void InventoryItem::displayItems()
     std::cout << inventory.size() << ". Exit" << "\n";
 }
 
-const int& InventoryItem::inventorySize() const
+int InventoryItem::inventorySize()
 {
-    const int& inventorySize = inventory.size();
+    int inventorySize = inventory.size();
     return inventorySize;
 }
 

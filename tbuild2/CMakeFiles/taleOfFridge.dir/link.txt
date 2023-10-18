@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/taleOfFridge.dir/src/main.cpp.o -o taleOfFridge  libfridgeLibs.a 
