@@ -21,7 +21,7 @@ Controller::Controller()
     };
     this->menu = 
     {
-        "bag", "use", "status", "save", "exit", "quit" 
+        "bag", "status", "save", "exit", "quit game" 
     };
 }
 
@@ -81,19 +81,19 @@ void Controller::parseMenu(const int& input)
             bagFlow();
             break;
         }
-        case 2:
+        case 1:
         {
             getShowStatus();
             statusFlow();
             break;
         }
-        case 4:
+        case 3:
         {
             // Exit
             exitMenu();
             break;
         }
-        case 5:
+        case 4:
         {
             quitGame();
             break;
