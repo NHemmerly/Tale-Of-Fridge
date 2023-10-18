@@ -1,7 +1,7 @@
 CMakeFiles/fridgeLibs.dir/src/controller.cpp.o: \
  /home/neilh/repos/Tale-Of-Fridge/src/controller.cpp \
  /usr/include/stdc-predef.h \
- /home/neilh/repos/Tale-Of-Fridge/src/controller.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/controller.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -172,8 +172,9 @@ CMakeFiles/fridgeLibs.dir/src/controller.cpp.o: \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/neilh/repos/Tale-Of-Fridge/src/usables.h \
- /home/neilh/repos/Tale-Of-Fridge/src/item.h /usr/include/c++/11/memory \
+ /home/neilh/repos/Tale-Of-Fridge/includes/usables.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/item.h \
+ /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
  /usr/include/c++/11/bits/unique_ptr.h \
@@ -186,5 +187,5 @@ CMakeFiles/fridgeLibs.dir/src/controller.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /home/neilh/repos/Tale-Of-Fridge/src/player.h \
- /home/neilh/repos/Tale-Of-Fridge/src/entity.h
+ /home/neilh/repos/Tale-Of-Fridge/includes/player.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/entity.h

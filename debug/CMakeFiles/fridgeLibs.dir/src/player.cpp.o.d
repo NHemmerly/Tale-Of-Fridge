@@ -1,6 +1,7 @@
 CMakeFiles/fridgeLibs.dir/src/player.cpp.o: \
  /home/neilh/repos/Tale-Of-Fridge/src/player.cpp \
- /usr/include/stdc-predef.h /home/neilh/repos/Tale-Of-Fridge/src/player.h \
+ /usr/include/stdc-predef.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/player.h \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -147,8 +148,8 @@ CMakeFiles/fridgeLibs.dir/src/player.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/neilh/repos/Tale-Of-Fridge/src/entity.h /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_uninitialized.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/entity.h \
+ /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -168,8 +169,8 @@ CMakeFiles/fridgeLibs.dir/src/player.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/neilh/repos/Tale-Of-Fridge/src/usables.h \
- /home/neilh/repos/Tale-Of-Fridge/src/item.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/usables.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/item.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc

@@ -2,16 +2,18 @@ cmake_minimum_required(VERSION 2.8)
 
 project(taleOfFridge)
 
+include_directories(includes)
+
 add_library(fridgeLibs
-    src/player.h
+    includes/player.h
     src/player.cpp
-    src/fileLoader.h 
+    includes/fileLoader.h 
     src/fileLoader.cpp
-    src/item.h 
+    includes/item.h 
     src/item.cpp   
-    src/controller.h 
+    includes/controller.h 
     src/controller.cpp
-    src/entity.h 
+    includes/entity.h 
     src/entity.cpp 
 )
 

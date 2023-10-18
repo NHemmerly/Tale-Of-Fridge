@@ -1,6 +1,7 @@
 CMakeFiles/fridgeLibs.dir/src/entity.cpp.o: \
  /home/neilh/repos/Tale-Of-Fridge/src/entity.cpp \
- /usr/include/stdc-predef.h /home/neilh/repos/Tale-Of-Fridge/src/entity.h \
+ /usr/include/stdc-predef.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/entity.h \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -170,8 +171,8 @@ CMakeFiles/fridgeLibs.dir/src/entity.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/neilh/repos/Tale-Of-Fridge/src/usables.h \
- /home/neilh/repos/Tale-Of-Fridge/src/item.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/usables.h \
+ /home/neilh/repos/Tale-Of-Fridge/includes/item.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc

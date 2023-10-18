@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/neilh/repos/Tale-Of-Fridge/includes
 
 CXX_FLAGS = -g
 
