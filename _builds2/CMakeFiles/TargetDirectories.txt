@@ -1,4 +1,0 @@
-/home/kneel/repos/taleOfFridge/_builds2/CMakeFiles/fridgeLibs.dir
-/home/kneel/repos/taleOfFridge/_builds2/CMakeFiles/taleOfFridge.dir
-/home/kneel/repos/taleOfFridge/_builds2/CMakeFiles/edit_cache.dir
-/home/kneel/repos/taleOfFridge/_builds2/CMakeFiles/rebuild_cache.dir
