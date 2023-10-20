@@ -26,9 +26,11 @@ public:
     void getDisplayItem(const int& dataIndex);
 
 protected:
+    void applyStats(const int& dataIndex);
     std::string name;
     int health = 100;
     int attackStat = 1;
     int defenseStat = 1;
     InventoryItem inventory;
+
 };

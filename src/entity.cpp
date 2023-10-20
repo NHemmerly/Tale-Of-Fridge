@@ -65,10 +65,32 @@ void Entity::getDisplayItem(const int& dataIndex)
     inventory.displayInfo(dataIndex);
 }
 
+void Entity::applyStats(const int& dataIndex)
+{
+    health = health - inventory.getAttack(dataIndex);
+    defenseStat = defenseStat + inventory.getDefense(dataIndex);
+}
+
 void Entity::useItem(const int& dataIndex)
 {
+    int currentHealth = health;
+    int currentDefense = defenseStat;
     std::cout << "Used 1 " << getItemName(dataIndex) << "\n";
-    health = health + inventory.getAttack(dataIndex);
+    applyStats(dataIndex);
+    if (currentHealth > health)
+    {
+        std::cout << "You took " << abs(inventory.getAttack(dataIndex)) << " damage!" << "\n";
+    } else if (currentHealth < health)
+    {
+        std::cout << "You gained " << abs(inventory.getAttack(dataIndex)) << " health!" << "\n";
+    }
+    if (currentDefense > defenseStat)
+    {
+        std::cout << "You lost " << abs(inventory.getDefense(dataIndex)) << " defense!" << "\n";
+    } else if (currentDefense < defenseStat)
+    {
+        std::cout << "You gained " << abs(inventory.getDefense(dataIndex)) << " defense!" << "\n";
+    }
     inventory.removeItem(dataIndex);
-    std::cout << health << "\n";
+    std::cout << "Current health: " << health << "\n";
 }
