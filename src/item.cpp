@@ -5,6 +5,7 @@ InventoryItem::InventoryItem()
     this->inventory = inventory;
 }
 
+
  //Getters
 const std::string& InventoryItem::getName(const int& dataIndex) const
 {
@@ -23,6 +24,17 @@ const int InventoryItem::getDefense(const int& dataIndex) const
 {
     return inventory[dataIndex]->getDefense();
 }
+
+bool InventoryItem::usable(const int& dataIndex)
+{
+    return inventory[dataIndex]->getUsable();
+}
+
+bool Item::getUsable()
+{
+    return usable;
+}
+
 
 void InventoryItem::displayInfo(const int& dataIndex)
 {

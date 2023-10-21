@@ -1,12 +1,6 @@
 #include "weapons.h"
 
-void Weapon::displayInfo()
+bool Weapon::getUsable()
 {
-    std::cout <<"==================================\n" <<
-    name << "\n" <<
-    "==================================\n" << 
-    "Description: " << description << "\n" <<
-    "Attack: " << attack << "\n" << 
-    "Defense: " << defense << "\n" <<
-    "1. exit" << "\n";
+    return usable;
 }

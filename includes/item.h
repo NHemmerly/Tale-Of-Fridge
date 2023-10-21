@@ -9,14 +9,18 @@ class Item {
 public:
     //Item constructor
     Item(const std::string& name, const std::string& description, int attack, int defense)
-        : name(name), description(description), attack(attack), defense(defense) {}
+        : name(name), description(description), attack(attack), defense(defense)
+    {
+        this->usable = usable;    
+    }
 
     // Getter methods
     const std::string& getName() const;
     const std::string& getDescription() const;
     const int getAttack() const;
     const int getDefense() const;
-    virtual void displayInfo();
+    virtual bool getUsable();
+    void displayInfo();
 
     //Setters
     void setName(const std::string& newName);
@@ -25,6 +29,8 @@ protected:
     std::string description;
     int attack;
     int defense;
+private:
+    bool usable = true;
 };
 
 class InventoryItem {
@@ -39,6 +45,7 @@ public:
     const std::string& getDescription(const int& dataIndex) const;
     const int getAttack(const int& dataIndex) const;
     const int getDefense(const int& dataIndex) const;
+    bool usable(const int& dataIndex);
     void displayInfo(const int& dataIndex);
     void displayItems();
     int inventorySize();

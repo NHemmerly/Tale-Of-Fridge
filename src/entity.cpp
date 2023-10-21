@@ -67,8 +67,15 @@ void Entity::getDisplayItem(const int& dataIndex)
 
 void Entity::applyStats(const int& dataIndex)
 {
-    health = health - inventory.getAttack(dataIndex);
-    defenseStat = defenseStat + inventory.getDefense(dataIndex);
+    if (inventory.usable(dataIndex))
+    {
+        health = health - inventory.getAttack(dataIndex);
+        defenseStat = defenseStat + inventory.getDefense(dataIndex);
+        inventory.removeItem(dataIndex);
+    } else 
+    {
+        std::cout << "This item is not usable" << "\n";
+    }
 }
 
 void Entity::useItem(const int& dataIndex)
@@ -91,6 +98,5 @@ void Entity::useItem(const int& dataIndex)
     {
         std::cout << "You gained " << abs(inventory.getDefense(dataIndex)) << " defense!" << "\n";
     }
-    inventory.removeItem(dataIndex);
     std::cout << "Current health: " << health << "\n";
 }
