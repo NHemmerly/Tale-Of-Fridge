@@ -65,12 +65,48 @@ void Entity::getDisplayItem(const int& dataIndex)
     inventory.displayInfo(dataIndex);
 }
 
+void Entity::displayDamage(const int& damage)
+{
+    if (damage > 0)
+    {
+        std::cout << "You took " << abs(damage) << " damage!" << "\n";
+    } else if (damage < 0)
+    {
+        std::cout << "You gained " << abs(damage) << " health!" << "\n";
+    } 
+}
+
+void Entity::displayDefense(const int& defense)
+{
+    if (defense < 0)
+    {
+        std::cout << "You lost " << abs(defense) << " defense!" << "\n";
+    } else if (defense > 0)
+    {
+        std::cout << "You gained " << abs(defense) << " defense!" << "\n";
+    }
+}
+
+void Entity::takeDamage(const int& damage)
+{
+    health -= damage;
+    displayDamage(damage);
+}
+
+void Entity::changeDefense(const int& defense)
+{
+    defenseStat += defense;
+    displayDefense(defense);
+}
+
 void Entity::applyStats(const int& dataIndex)
 {
     if (inventory.usable(dataIndex))
     {
-        health = health - inventory.getAttack(dataIndex);
-        defenseStat = defenseStat + inventory.getDefense(dataIndex);
+        std::cout << "Used 1 " << getItemName(dataIndex) << "\n";
+        takeDamage(inventory.getAttack(dataIndex));
+        changeDefense(inventory.getDefense(dataIndex));
+        std::cout << "Current Health: " << health << "\n";
         inventory.removeItem(dataIndex);
     } else 
     {
@@ -80,23 +116,5 @@ void Entity::applyStats(const int& dataIndex)
 
 void Entity::useItem(const int& dataIndex)
 {
-    int currentHealth = health;
-    int currentDefense = defenseStat;
-    std::cout << "Used 1 " << getItemName(dataIndex) << "\n";
     applyStats(dataIndex);
-    if (currentHealth > health)
-    {
-        std::cout << "You took " << abs(inventory.getAttack(dataIndex)) << " damage!" << "\n";
-    } else if (currentHealth < health)
-    {
-        std::cout << "You gained " << abs(inventory.getAttack(dataIndex)) << " health!" << "\n";
-    }
-    if (currentDefense > defenseStat)
-    {
-        std::cout << "You lost " << abs(inventory.getDefense(dataIndex)) << " defense!" << "\n";
-    } else if (currentDefense < defenseStat)
-    {
-        std::cout << "You gained " << abs(inventory.getDefense(dataIndex)) << " defense!" << "\n";
-    }
-    std::cout << "Current health: " << health << "\n";
 }

@@ -17,6 +17,8 @@ public:
     void setName(const std::string& name);
     void displayInfo();
     void useItem(const int& dataIndex);
+    void takeDamage(const int& damage);
+    void changeDefense(const int& defense);
 
     void getDisplayInventory();
     void getDisplayItem();
@@ -24,6 +26,8 @@ public:
     const std::string& getItemName(const int& dataIndex) const;
     int inventorySize();
     void getDisplayItem(const int& dataIndex);
+    void displayDamage(const int& damage);
+    void displayDefense(const int& defense);
 
 protected:
     void applyStats(const int& dataIndex);
