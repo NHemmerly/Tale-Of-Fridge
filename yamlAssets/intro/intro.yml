@@ -1,0 +1,8 @@
+name: Rubbled cobblstone path
+description: You stand on a destroyed cobblestone street a few steps from the doorway to your home
+north: path to city center
+east: rubble
+south: rubble
+west: rubble
+items: [stone]
+characters: []

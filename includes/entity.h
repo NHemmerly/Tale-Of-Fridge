@@ -36,5 +36,6 @@ protected:
     int attackStat = 1;
     int defenseStat = 1;
     InventoryItem inventory;
+    
 
 };
