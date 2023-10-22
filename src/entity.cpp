@@ -1,5 +1,17 @@
 #include "entity.h"
 
+Entity::Entity()
+{
+    name = "none";
+    health = 100;
+    attackStat = 0;
+    defenseStat = 0;
+}
+
+Entity::Entity(const std::string& name, const int& health, const int& attackStat, const int& defenseStat)
+    : name(name), health(health), attackStat(attackStat), defenseStat(defenseStat) {};
+
+
 const std::string& Entity::getName() const 
 {
     return name;

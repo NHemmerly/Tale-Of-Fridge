@@ -10,6 +10,8 @@
 class Entity
 {
 public:
+    Entity();
+    Entity(const std::string& name, const int& health, const int& attackStat, const int& defenseStat);
     const std::string& getName() const;
     const int& getHP() const;
     const int& getAttack() const;

@@ -28,6 +28,10 @@ Controller::Controller()
 int Controller::runGame()
 {
     mapController.buildMap();
+    std::shared_ptr<Player> loadPlayer = mapController.maps[0]->players[0];
+    player = loadPlayer;
+    std::cout << player->getName() << "\n";
+    player->setName(mapController.maps[0]->players[0]->getName());
 
     bool gameIsRunning = true;
 
@@ -38,16 +42,17 @@ int Controller::runGame()
         std::string inputHandler;
         FileLoad::writeText("textAssets/story1.txt", 0);
         std::cin >> inputHandler;
-        player.setName(inputHandler);
+        player->setName(inputHandler);
+        std::cout << mapController.maps[0]->players[0]->getName() << "\n";
         FileLoad::writeText("textAssets/iRemember.txt", 0); 
-        std::cout << player.getName() << std::endl;
+        std::cout << player->getName() << std::endl;
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
 
-        player.inventory.addItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
-        FileLoad::dialogText("textAssets/1/1.txt", player.inventory.getName(0));
-        player.inventory.addItem("Potion", "A healing potion", -10, 0);
-        player.inventory.addItem("Pain", "Owie ouch ow", 20, 0);
+        player->inventory.addItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
+        FileLoad::dialogText("textAssets/1/1.txt", player->inventory.getName(0));
+        player->inventory.addItem("Potion", "A healing potion", -10, 0);
+        player->inventory.addItem("Pain", "Owie ouch ow", 20, 0);
         std::cout << mapController.getMapName() << "\n";
 
         bool inputLoop = true;
@@ -116,13 +121,13 @@ void Controller::parseMenu(const int& input)
         case 0:
         {
             // Bag
-            player.inventory.displayItems();
+            player->inventory.displayItems();
             bagFlow();
             break;
         }
         case 1:
         {
-            player.displayInfo();
+            player->displayInfo();
             statusFlow();
             break;
         }
@@ -180,7 +185,7 @@ void Controller::exitMenu()
 void Controller::exitItem()
 {
     displayingItem = false;
-    player.inventory.displayItems();
+    player->inventory.displayItems();
 }
 
 void Controller::exitStatus()
@@ -196,7 +201,7 @@ void Controller::bagFlow()
     std::string inputStr = "";
     while(displaying)
     {
-        int inventorySize = player.inventory.inventorySize();
+        int inventorySize = player->inventory.inventorySize();
         std::cin >> inputStr;
         input = convertInt(inputStr);
         if (input == inventorySize)
@@ -214,7 +219,7 @@ void Controller::bagFlow()
 
 void Controller::itemFlow(const int& dataIndex)
 {
-    player.inventory.displayInfo(dataIndex);
+    player->inventory.displayInfo(dataIndex);
     int input = 0;
     std::string inputString = "";
     displayingItem = true;
@@ -228,7 +233,7 @@ void Controller::itemFlow(const int& dataIndex)
             continue;
         } else if (input == 0)
         {
-            player.useItem(dataIndex);
+            player->useItem(dataIndex);
         }
         exitItem();
         

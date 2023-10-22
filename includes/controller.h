@@ -38,6 +38,6 @@ private:
     std::vector<std::string> keyWords;
     std::vector<std::string> menu;
     bool gameState = true;
-    Player player;
+    std::shared_ptr<Player> player;
     MapController mapController;
 };
