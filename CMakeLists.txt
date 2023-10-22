@@ -19,10 +19,10 @@ add_library(fridgeLibs
     src/entity.cpp 
     includes/weapons.h 
     src/weapons.cpp 
-    includes/map.h 
-    src/map.cpp 
-    includes/yamlParser.h 
-    src/yamlParser.cpp 
+    includes/room.h 
+    src/room.cpp 
+    includes/mapController.h 
+    src/mapController.cpp 
 )
 
 add_executable(taleOfFridge src/main.cpp)

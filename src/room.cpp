@@ -1,6 +1,6 @@
-#include "map.h"
+#include "room.h"
 
-Map::Map(const std::string& name, const std::string& description, const std::string& north,
+Room::Room(const std::string& name, const std::string& description, const std::string& north,
          const std::string& south, const std::string& east, const std::string& west,
          const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
          const bool& visited)
@@ -8,7 +8,7 @@ Map::Map(const std::string& name, const std::string& description, const std::str
       items(items), players(players), visited(visited)
 {}
 
-const std::string& Map::getName()
+const std::string& Room::getName()
 {
     return name;
 }

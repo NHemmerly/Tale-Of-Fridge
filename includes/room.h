@@ -4,10 +4,10 @@
 #include <string>
 #include "player.h"
 
-class Map
+class Room
 {
 public:
-    Map(const std::string& name, const std::string& description, const std::string& north,
+    Room(const std::string& name, const std::string& description, const std::string& north,
          const std::string& south, const std::string& east, const std::string& west,
          const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
          const bool& visited);

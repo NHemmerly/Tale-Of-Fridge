@@ -1,15 +1,15 @@
-#include "yamlParser.h"
+#include "mapController.h"
 
-Parser::Parser(){}
+MapController::MapController(){}
 
-const YAML::Node Parser::loadYml(const std::string& filepath)
+const YAML::Node MapController::loadYml(const std::string& filepath)
 {
     //load yaml
     YAML::Node config = YAML::LoadFile(filepath);
     return config;  
 }
 
-const std::string Parser::fileSearch(const std::string& dirPath, const std::string& name)
+const std::string MapController::fileSearch(const std::string& dirPath, const std::string& name)
 {
     std::filesystem::path directory = dirPath;
     std::string fileName = name + ".yml";
@@ -25,7 +25,7 @@ const std::string Parser::fileSearch(const std::string& dirPath, const std::stri
     return "Directory Error";
 }
 
-const std::shared_ptr<Weapon> Parser::createWeapon(const std::string& filepath)
+const std::shared_ptr<Weapon> MapController::createWeapon(const std::string& filepath)
 {
     const YAML::Node config = loadYml(filepath);
 
@@ -38,7 +38,7 @@ const std::shared_ptr<Weapon> Parser::createWeapon(const std::string& filepath)
     return newWeapon;
 }
 
-const std::shared_ptr<Item> Parser::createItem(const std::string& filepath)
+const std::shared_ptr<Item> MapController::createItem(const std::string& filepath)
 {
     const YAML::Node config = loadYml(filepath);
 
@@ -51,7 +51,7 @@ const std::shared_ptr<Item> Parser::createItem(const std::string& filepath)
     return newItem;
 }
 
-const Player Parser::createPlayer(const std::string& filepath)
+const Player MapController::createPlayer(const std::string& filepath)
 {
     const YAML::Node player = loadYml(filepath);
 
@@ -64,7 +64,7 @@ const Player Parser::createPlayer(const std::string& filepath)
     return newPlayer;
 }
 
-const std::vector<std::shared_ptr<Item>> Parser::loadItems(const YAML::Node& room)
+const std::vector<std::shared_ptr<Item>> MapController::loadItems(const YAML::Node& room)
 {
     std::vector<std::shared_ptr<Item>> items;
     if (room["items"] && room["items"].IsSequence())
@@ -90,7 +90,7 @@ const std::vector<std::shared_ptr<Item>> Parser::loadItems(const YAML::Node& roo
     return items;
 }
 
-const std::vector<Player> Parser::loadPlayers(const YAML::Node& room)
+const std::vector<Player> MapController::loadPlayers(const YAML::Node& room)
 {
     std::vector<Player> players;
     if (room["characters"] && room["characters"].IsSequence())
@@ -112,7 +112,7 @@ const std::vector<Player> Parser::loadPlayers(const YAML::Node& room)
 }
 
 
-const std::shared_ptr<Map> Parser::buildRoom(const std::string& filepath)
+const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath)
 {
     try {
         const YAML::Node room = loadYml(filepath);
@@ -127,7 +127,7 @@ const std::shared_ptr<Map> Parser::buildRoom(const std::string& filepath)
         std::vector<Player> characters = loadPlayers(room);
         bool visited = room["visited"].as<bool>();
 
-        std::shared_ptr<Map> newMap = std::make_shared<Map>(name, description, north, south, east, west, items, characters, visited);
+        std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, north, south, east, west, items, characters, visited);
         return newMap;
     } catch (const YAML::BadFile& e) {
         std::cerr << "Can't load yaml :( " << filepath << "\n";
@@ -136,7 +136,7 @@ const std::shared_ptr<Map> Parser::buildRoom(const std::string& filepath)
     }
 }
 
-void Parser::buildMap()
+void MapController::buildMap()
 {
     std::filesystem::path mapPath = "yamlAssets/rooms/";
     if (std::filesystem::is_directory(mapPath))
@@ -148,7 +148,7 @@ void Parser::buildMap()
     }
 }
 
-const std::string& Parser::getMapName()
+const std::string& MapController::getMapName()
 {
     return maps[0]->getName();
 }

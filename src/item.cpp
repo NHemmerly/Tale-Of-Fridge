@@ -43,6 +43,9 @@ void InventoryItem::displayInfo(const int& dataIndex)
 
 void InventoryItem::displayItems()
 {
+    std::cout << "==================================\n" <<
+    "bag\n" <<
+    "==================================\n";
     if (inventory.size() == 0) {
         std::cout << "Your Inventory is Empty" << std::endl;
     }

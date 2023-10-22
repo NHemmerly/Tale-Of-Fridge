@@ -9,12 +9,12 @@
 #include "item.h"
 #include "player.h"
 #include "weapons.h"
-#include "map.h"
+#include "room.h"
 
-class Parser
+class MapController
 {
     public:
-        Parser();
+        MapController();
         const YAML::Node loadYml(const std::string& filepath);
         const std::shared_ptr<Weapon> createWeapon(const std::string& filepath);
         const std::shared_ptr<Item> createItem(const std::string& filepath);
@@ -23,8 +23,8 @@ class Parser
 
         const std::string& getMapName();
     private:
-        std::vector<std::shared_ptr<Map>> maps;
-        const std::shared_ptr<Map> buildRoom(const std::string& filepath);
+        std::vector<std::shared_ptr<Room>> maps;
+        const std::shared_ptr<Room> buildRoom(const std::string& filepath);
         const std::vector<std::shared_ptr<Item>> loadItems(const YAML::Node& room);
         const std::vector<Player> loadPlayers(const YAML::Node& room);
         const std::string fileSearch(const std::string& dirPath, const std::string& name);

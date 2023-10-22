@@ -25,6 +25,44 @@ Controller::Controller()
     };
 }
 
+int Controller::runGame()
+{
+    mapController.buildMap();
+
+    bool gameIsRunning = true;
+
+
+    while(gameIsRunning)
+    {
+        //Intro
+        std::string inputHandler;
+        FileLoad::writeText("textAssets/story1.txt", 0);
+        std::cin >> inputHandler;
+        player.setName(inputHandler);
+        FileLoad::writeText("textAssets/iRemember.txt", 0); 
+        std::cout << player.getName() << std::endl;
+        FileLoad::writeText("textAssets/myName.txt", 0);
+        std::cin >> inputHandler;
+
+        player.getAddItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
+        FileLoad::dialogText("textAssets/1/1.txt", player.getItemName(0));
+        player.getAddItem("Potion", "A healing potion", -10, 0);
+        player.getAddItem("Pain", "Owie ouch ow", 20, 0);
+        std::cout << mapController.getMapName() << "\n";
+
+        bool inputLoop = true;
+
+            while(inputLoop)
+            {
+                std::cin >> inputHandler;
+                parseCommand(inputHandler);
+                std::cout << inputLoop << "\n";
+                inputLoop = getGameState();
+            }
+        return 1;
+    }
+}
+
 std::shared_ptr<Controller> Controller::createInstance()
 {
     return std::make_shared<Controller>();
@@ -77,13 +115,13 @@ void Controller::parseMenu(const int& input)
         case 0:
         {
             // Bag
-            getPlayerInventory();
+            player.getDisplayInventory();
             bagFlow();
             break;
         }
         case 1:
         {
-            getShowStatus();
+            player.displayInfo();
             statusFlow();
             break;
         }
@@ -141,7 +179,7 @@ void Controller::exitMenu()
 void Controller::exitItem()
 {
     displayingItem = false;
-    getPlayerInventory();
+    player.getDisplayInventory();
 }
 
 void Controller::exitStatus()
@@ -157,7 +195,7 @@ void Controller::bagFlow()
     std::string inputStr = "";
     while(displaying)
     {
-        int inventorySize = getInventorySize();
+        int inventorySize = player.inventorySize();
         std::cin >> inputStr;
         input = convertInt(inputStr);
         if (input == inventorySize)
@@ -175,7 +213,7 @@ void Controller::bagFlow()
 
 void Controller::itemFlow(const int& dataIndex)
 {
-    getDisplayInfo(dataIndex);
+    player.getDisplayItem(dataIndex);
     int input = 0;
     std::string inputString = "";
     displayingItem = true;
@@ -239,50 +277,6 @@ std::vector<std::string> Controller::splitString(const std::string& input)
     return words;
 }
 
-//Delegations
-
-void Controller::getPlayerInventory()
-{
-    std::cout << "==================================\n" <<
-    "bag\n" <<
-    "==================================\n";
-    player.getDisplayInventory();
-}
-int Controller::getInventorySize()
-{
-    return player.inventorySize();
-}
-
-void Controller::getSetName(const std::string& newName)
-{
-    player.setName(newName);
-}
-
-const std::string& Controller::getGetName() const 
-{
-    return player.getName();
-}
-
-void Controller::getAddItem(const std::string& name, const std::string& description, int attack, int defense, int flag)
-{
-    player.getAddItem(name, description, attack, defense, flag);
-}
-
-const std::string& Controller::getItemName(const int& dataIndex) const
-{
-    return player.getItemName(dataIndex);
-}
-
-void Controller::getDisplayInfo(const int& dataIndex)
-{
-    player.getDisplayItem(dataIndex);
-}
-
-void Controller::getShowStatus()
-{
-    player.displayInfo();
-}
-
 //Utility
 int Controller::convertInt(const std::string& inputStr)
 {
@@ -299,8 +293,4 @@ int Controller::convertInt(const std::string& inputStr)
     return input;
 }
 
-const std::string& Controller::getMapName()
-{
-    return parser.getMapName();
-}
 
