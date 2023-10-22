@@ -40,31 +40,6 @@ void Entity::displayInfo()
 
 //Delegations
 
-void Entity::getAddItem(const std::string& name, const std::string& description, int attack, int defense, int flag)
-{
-    inventory.addItem(name, description, attack, defense, flag);
-}
-
-const std::string& Entity::getItemName(const int& dataIndex) const
-{
-    return inventory.getName(dataIndex);
-}
-
-void Entity::getDisplayInventory()
-{
-    inventory.displayItems();
-}
-
-int Entity::inventorySize()
-{
-    return inventory.inventorySize();
-}
-
-void Entity::getDisplayItem(const int& dataIndex)
-{
-    inventory.displayInfo(dataIndex);
-}
-
 void Entity::displayDamage(const int& damage)
 {
     if (damage > 0)
@@ -103,7 +78,7 @@ void Entity::applyStats(const int& dataIndex)
 {
     if (inventory.usable(dataIndex))
     {
-        std::cout << "Used 1 " << getItemName(dataIndex) << "\n";
+        std::cout << "Used 1 " << inventory.getName(dataIndex) << "\n";
         takeDamage(inventory.getAttack(dataIndex));
         changeDefense(inventory.getDefense(dataIndex));
         std::cout << "Current Health: " << health << "\n";

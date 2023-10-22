@@ -44,10 +44,10 @@ int Controller::runGame()
         FileLoad::writeText("textAssets/myName.txt", 0);
         std::cin >> inputHandler;
 
-        player.getAddItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
-        FileLoad::dialogText("textAssets/1/1.txt", player.getItemName(0));
-        player.getAddItem("Potion", "A healing potion", -10, 0);
-        player.getAddItem("Pain", "Owie ouch ow", 20, 0);
+        player.inventory.addItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
+        FileLoad::dialogText("textAssets/1/1.txt", player.inventory.getName(0));
+        player.inventory.addItem("Potion", "A healing potion", -10, 0);
+        player.inventory.addItem("Pain", "Owie ouch ow", 20, 0);
         std::cout << mapController.getMapName() << "\n";
 
         bool inputLoop = true;
@@ -59,8 +59,9 @@ int Controller::runGame()
                 std::cout << inputLoop << "\n";
                 inputLoop = getGameState();
             }
-        return 1;
+        return 0;
     }
+    return 1;
 }
 
 std::shared_ptr<Controller> Controller::createInstance()
@@ -115,7 +116,7 @@ void Controller::parseMenu(const int& input)
         case 0:
         {
             // Bag
-            player.getDisplayInventory();
+            player.inventory.displayItems();
             bagFlow();
             break;
         }
@@ -179,7 +180,7 @@ void Controller::exitMenu()
 void Controller::exitItem()
 {
     displayingItem = false;
-    player.getDisplayInventory();
+    player.inventory.displayItems();
 }
 
 void Controller::exitStatus()
@@ -195,7 +196,7 @@ void Controller::bagFlow()
     std::string inputStr = "";
     while(displaying)
     {
-        int inventorySize = player.inventorySize();
+        int inventorySize = player.inventory.inventorySize();
         std::cin >> inputStr;
         input = convertInt(inputStr);
         if (input == inventorySize)
@@ -213,7 +214,7 @@ void Controller::bagFlow()
 
 void Controller::itemFlow(const int& dataIndex)
 {
-    player.getDisplayItem(dataIndex);
+    player.inventory.displayInfo(dataIndex);
     int input = 0;
     std::string inputString = "";
     displayingItem = true;
