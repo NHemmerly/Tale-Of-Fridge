@@ -27,5 +27,15 @@ add_library(fridgeLibs
 
 add_executable(taleOfFridge src/main.cpp)
 
+add_custom_target(CopyYAMLAssets
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/yamlAssets ${CMAKE_BINARY_DIR}/yamlAssets
+)
+add_custom_command(
+    TARGET taleOfFridge
+    PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/yamlAssets ${CMAKE_BINARY_DIR}/yamlAssets
+)
+
+add_dependencies(taleOfFridge CopyYAMLAssets)
 target_link_libraries(taleOfFridge fridgeLibs)
 target_link_libraries(taleOfFridge yaml-cpp)

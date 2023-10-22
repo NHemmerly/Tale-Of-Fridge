@@ -6,7 +6,6 @@ const YAML::Node Parser::loadYml(const std::string& filepath)
 {
     //load yaml
     YAML::Node config = YAML::LoadFile(filepath);
-
     return config;  
 }
 
@@ -17,18 +16,7 @@ const std::string Parser::fileSearch(const std::string& dirPath, const std::stri
 
     if (std::filesystem::is_directory(directory))
     {
-        for (const auto& entry : std::filesystem::directory_iterator(directory))
-        {
-            if (entry.path().filename() == fileName)
-            {
-                return entry.path().string();
-            }
-            else
-            {
-                std::cout << "No File Found!" << "\n";
-                return "No File Found!";
-            }
-        }
+        return dirPath + fileName;
     } else
     {
         std::cout << "No File Found!" << "\n";
@@ -87,7 +75,7 @@ const std::vector<std::shared_ptr<Item>> Parser::loadItems(const YAML::Node& roo
         {
             if (itemNode.IsScalar())
             {
-                std::string newObjectName = fileSearch("objects/", itemNode.as<std::string>());
+                std::string newObjectName = fileSearch("yamlAssets/objects/", itemNode.as<std::string>());
                 const YAML::Node config = loadYml(newObjectName);
                 if (config["weapon"])
                 {
@@ -105,7 +93,7 @@ const std::vector<std::shared_ptr<Item>> Parser::loadItems(const YAML::Node& roo
 const std::vector<Player> Parser::loadPlayers(const YAML::Node& room)
 {
     std::vector<Player> players;
-    if (room["characters"] && room["character"].IsSequence())
+    if (room["characters"] && room["characters"].IsSequence())
     {
         const YAML::Node& playersNode = room["characters"];
 
@@ -113,7 +101,7 @@ const std::vector<Player> Parser::loadPlayers(const YAML::Node& room)
         {
             if (playerNode.IsScalar())
             {
-                std::string newObjectName = fileSearch("objects/", playerNode.as<std::string>());
+                std::string newObjectName = fileSearch("yamlAssets/objects/", playerNode.as<std::string>());
                 const YAML::Node config = loadYml(newObjectName);
                 players.push_back(createPlayer(newObjectName));
                 
@@ -126,25 +114,31 @@ const std::vector<Player> Parser::loadPlayers(const YAML::Node& room)
 
 const std::shared_ptr<Map> Parser::buildRoom(const std::string& filepath)
 {
-    const YAML::Node room = loadYml(filepath);
+    try {
+        const YAML::Node room = loadYml(filepath);
 
-    std::string name = room["name"].as<std::string>();
-    std::string description = room["description"].as<std::string>();
-    std::string north = room["north"].as<std::string>();
-    std::string south = room["south"].as<std::string>();
-    std::string east = room["east"].as<std::string>();
-    std::string west = room["west"].as<std::string>();
-    std::vector<std::shared_ptr<Item>> items = loadItems(room);
-    std::vector<Player> characters = loadPlayers(room);
-    bool visited = room["visited"].as<bool>();
+        std::string name = room["name"].as<std::string>();
+        std::string description = room["description"].as<std::string>();
+        std::string north = room["north"].as<std::string>();
+        std::string south = room["south"].as<std::string>();
+        std::string east = room["east"].as<std::string>();
+        std::string west = room["west"].as<std::string>();
+        std::vector<std::shared_ptr<Item>> items = loadItems(room);
+        std::vector<Player> characters = loadPlayers(room);
+        bool visited = room["visited"].as<bool>();
 
-    std::shared_ptr<Map> newMap = std::make_shared<Map>(name, description, north, south, east, west, items, characters, visited);
-    return newMap;
+        std::shared_ptr<Map> newMap = std::make_shared<Map>(name, description, north, south, east, west, items, characters, visited);
+        return newMap;
+    } catch (const YAML::BadFile& e) {
+        std::cerr << "Can't load yaml :( " << filepath << "\n";
+
+        return nullptr;
+    }
 }
 
 void Parser::buildMap()
 {
-    std::filesystem::path mapPath = "yamlAssets/rooms";
+    std::filesystem::path mapPath = "yamlAssets/rooms/";
     if (std::filesystem::is_directory(mapPath))
     {
         for (const auto& entry : std::filesystem::directory_iterator(mapPath))

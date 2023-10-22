@@ -24,6 +24,7 @@ public:
     const std::string& getItemName(const int& dataIndex) const;
     bool getGameState();
     const std::string& getMapName();
+    Parser parser;
 
 private:
     std::vector<std::string> splitString(const std::string& input);
@@ -45,7 +46,6 @@ private:
     bool gameState = true;
     //Delegations
     Player player;
-    Parser parser;
     int getInventorySize();
     void getDisplayInfo(const int& dataIndex);
     void getShowStatus();
