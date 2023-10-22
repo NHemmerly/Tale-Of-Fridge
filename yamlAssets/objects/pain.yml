@@ -1,0 +1,5 @@
+item:
+  name: pain
+  description: ow ouchie oww
+  attack: 20
+  defense: 0

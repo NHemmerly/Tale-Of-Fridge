@@ -1,0 +1,7 @@
+weapon:
+  name: The blade
+  description: A mysterious talking blade that appears to guide your way.
+  Whether the blade is to be trusted is yet to be seen.
+  attack: 3
+  defense: 0
+  weaponFlag: 1

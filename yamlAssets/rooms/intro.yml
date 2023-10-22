@@ -1,0 +1,9 @@
+name: Rubbled cobblstone path
+description: You stand on a destroyed cobblestone street a few steps from the doorway to your home
+north: path to city center
+south: This way is blocked by rubble! 
+east: This way is blocked by rubble! 
+west: This way is blocked by rubble!
+items: [sword, potion, pain]
+characters: [player]
+visited: false

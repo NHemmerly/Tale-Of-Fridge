@@ -1,0 +1,5 @@
+player:
+  name: kneel
+  health: 100
+  attackStat: 1
+  defenseStat: 1
