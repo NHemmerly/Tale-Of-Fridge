@@ -1,6 +1,6 @@
 #include "yamlParser.h"
 
-Parser parser;
+Parser::Parser(){}
 
 const YAML::Node Parser::loadYml(const std::string& filepath)
 {
@@ -124,7 +124,7 @@ const std::vector<Player> Parser::loadPlayers(const YAML::Node& room)
 }
 
 
-const Map Parser::buildRoom(const std::string& filepath)
+const std::shared_ptr<Map> Parser::buildRoom(const std::string& filepath)
 {
     const YAML::Node room = loadYml(filepath);
 
@@ -138,7 +138,7 @@ const Map Parser::buildRoom(const std::string& filepath)
     std::vector<Player> characters = loadPlayers(room);
     bool visited = room["visited"].as<bool>();
 
-    Map newMap(name, description, north, south, east, west, items, characters, visited);
+    std::shared_ptr<Map> newMap = std::make_shared<Map>(name, description, north, south, east, west, items, characters, visited);
     return newMap;
 }
 
@@ -149,7 +149,13 @@ void Parser::buildMap()
     {
         for (const auto& entry : std::filesystem::directory_iterator(mapPath))
         {
-            Map newMap = parser.buildRoom(entry.path().string());
+            maps.push_back(buildRoom(entry.path().string()));
         }
     }
 }
+
+const std::string& Parser::getMapName()
+{
+    return maps[0]->getName();
+}
+

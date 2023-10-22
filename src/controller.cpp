@@ -298,3 +298,9 @@ int Controller::convertInt(const std::string& inputStr)
     }
     return input;
 }
+
+const std::string& Controller::getMapName()
+{
+    return parser.getMapName();
+}
+

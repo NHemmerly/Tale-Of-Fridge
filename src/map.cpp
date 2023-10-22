@@ -7,3 +7,8 @@ Map::Map(const std::string& name, const std::string& description, const std::str
     : name(name), description(description), north(north), south(south), east(east), west(west),
       items(items), players(players), visited(visited)
 {}
+
+const std::string& Map::getName()
+{
+    return name;
+}

@@ -30,6 +30,7 @@ int main()
         FileLoad::dialogText("textAssets/1/1.txt", game->getItemName(0));
         game->getAddItem("Potion", "A healing potion", -10, 0);
         game->getAddItem("Pain", "Owie ouch ow", 20, 0);
+        std::cout << game->getMapName() << "\n";
 
         bool inputLoop = true;
 

@@ -7,6 +7,7 @@
 #include <typeinfo>
 #include "usables.h"
 #include "player.h"
+#include "yamlParser.h"
 
 class Controller {
 public:
@@ -22,6 +23,7 @@ public:
     void getAddItem(const std::string& name, const std::string& description, int attack, int defense, int flag = 0);
     const std::string& getItemName(const int& dataIndex) const;
     bool getGameState();
+    const std::string& getMapName();
 
 private:
     std::vector<std::string> splitString(const std::string& input);
@@ -43,6 +45,7 @@ private:
     bool gameState = true;
     //Delegations
     Player player;
+    Parser parser;
     int getInventorySize();
     void getDisplayInfo(const int& dataIndex);
     void getShowStatus();

@@ -1,8 +1,10 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 project(taleOfFridge)
 
 include_directories(includes)
+add_subdirectory(includes/yaml-cpp)
+include_directories(${YAML_CPP_INCLUDE_DIRS})
 
 add_library(fridgeLibs
     includes/player.h
@@ -21,9 +23,9 @@ add_library(fridgeLibs
     src/map.cpp 
     includes/yamlParser.h 
     src/yamlParser.cpp 
-    includes/yaml.h
 )
 
 add_executable(taleOfFridge src/main.cpp)
 
 target_link_libraries(taleOfFridge fridgeLibs)
+target_link_libraries(taleOfFridge yaml-cpp)

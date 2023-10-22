@@ -12,6 +12,8 @@ public:
          const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
          const bool& visited);
 
+    const std::string& getName();
+
     
 private:
     std::string name;
