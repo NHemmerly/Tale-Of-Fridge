@@ -22,6 +22,8 @@ public:
   std::vector<std::string> story;
   void playRoom();
   std::string makeName(const int& part);
+  void writeText(const int& part);
+  std::vector<std::shared_ptr<Item>> items;
 private:
   void lineByLine(const std::string& text);
   std::string name;
@@ -30,6 +32,5 @@ private:
   std::string south;
   std::string east;
   std::string west;
-  std::vector<std::shared_ptr<Item>> items;
   bool visited;
 };

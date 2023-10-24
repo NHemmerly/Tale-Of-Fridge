@@ -9,7 +9,7 @@ Controller::Controller()
 {
     this->verbs = 
     {
-        "go", "take", "use"
+        "go", "take", "use", "look"
     };
     this->nouns = 
     {
@@ -44,7 +44,7 @@ int Controller::runGame()
         //Intro
         std::string inputHandler;
         player->setName(currentRoom->makeName(0));
-        FileLoad::writeText("textAssets/iRemember.txt", 0); 
+        currentRoom->writeText(2);
         std::cout << player->getName() << "\n";
 
         player->inventory.addItem(currentRoom->makeName(1), FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);

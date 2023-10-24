@@ -23,6 +23,10 @@ std::string Room::makeName(const int& part)
   std::cin >> inputHandler;
   return inputHandler;
 }
+void Room::writeText(const int& part)
+{
+  lineByLine(story[part]);
+}
 void Room::lineByLine(const std::string& text)
 {
   std::stringstream textStream(text);
