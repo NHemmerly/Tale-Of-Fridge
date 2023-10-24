@@ -10,5 +10,38 @@ Room::Room(const std::string& name, const std::string& description, const std::s
 
 const std::string& Room::getName()
 {
-    return name;
+  return name;
+}
+
+
+//Story Handling
+
+std::string Room::makeName(const int& part)
+{
+  std::string inputHandler;
+  lineByLine(story[part]);
+  std::cin >> inputHandler;
+  return inputHandler;
+}
+void Room::lineByLine(const std::string& text)
+{
+  std::stringstream textStream(text);
+  std::string line;
+
+  while (std::getline(textStream, line))
+  {
+    std::cout << line << "\n";
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+  }
+}
+
+void Room::playRoom()
+{
+  if (!visited)
+  {
+    for (const std::string& storyText : story)
+    {
+      lineByLine(storyText);
+    }
+  }
 }

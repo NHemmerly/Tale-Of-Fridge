@@ -27,11 +27,14 @@ Controller::Controller()
 
 int Controller::runGame()
 {
+
+    std::shared_ptr<Room> currentRoom;
     mapController.buildMap();
-    std::shared_ptr<Player> loadPlayer = mapController.maps[0]->players[0];
+    currentRoom = mapController.maps[0];
+    std::shared_ptr<Player> loadPlayer = currentRoom->players[0];
     player = loadPlayer;
     std::cout << player->getName() << "\n";
-    player->setName(mapController.maps[0]->players[0]->getName());
+    player->setName(currentRoom->players[0]->getName());
 
     bool gameIsRunning = true;
 
@@ -40,17 +43,11 @@ int Controller::runGame()
     {
         //Intro
         std::string inputHandler;
-        std::cout << mapController.maps[0]->story[0] << "\n";
-        FileLoad::writeText("textAssets/story1.txt", 0);
-        std::cin >> inputHandler;
-        player->setName(inputHandler);
-        std::cout << mapController.maps[0]->players[0]->getName() << "\n";
+        player->setName(currentRoom->makeName(0));
         FileLoad::writeText("textAssets/iRemember.txt", 0); 
-        std::cout << player->getName() << std::endl;
-        FileLoad::writeText("textAssets/myName.txt", 0);
-        std::cin >> inputHandler;
+        std::cout << player->getName() << "\n";
 
-        player->inventory.addItem(inputHandler, FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
+        player->inventory.addItem(currentRoom->makeName(1), FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
         FileLoad::dialogText("textAssets/1/1.txt", player->inventory.getName(0));
         player->inventory.addItem("Potion", "A healing potion", -10, 0);
         player->inventory.addItem("Pain", "Owie ouch ow", 20, 0);

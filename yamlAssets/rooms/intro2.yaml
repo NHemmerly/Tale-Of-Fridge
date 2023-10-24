@@ -13,3 +13,4 @@ characters:
 visited: false
 story:
   - intro
+  - bladeName
