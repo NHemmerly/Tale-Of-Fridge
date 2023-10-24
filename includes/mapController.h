@@ -27,6 +27,7 @@ class MapController
         const std::shared_ptr<Room> buildRoom(const std::string& filepath);
         const std::vector<std::shared_ptr<Item>> loadItems(const YAML::Node& room);
         const std::vector<std::shared_ptr<Player>> loadPlayers(const YAML::Node& room);
+        const std::vector<std::string> loadStory(const YAML::Node& room);
         const std::string fileSearch(const std::string& dirPath, const std::string& name);
 
         

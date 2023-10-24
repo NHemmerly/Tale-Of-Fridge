@@ -40,6 +40,7 @@ int Controller::runGame()
     {
         //Intro
         std::string inputHandler;
+        std::cout << mapController.maps[0]->story[0] << "\n";
         FileLoad::writeText("textAssets/story1.txt", 0);
         std::cin >> inputHandler;
         player->setName(inputHandler);

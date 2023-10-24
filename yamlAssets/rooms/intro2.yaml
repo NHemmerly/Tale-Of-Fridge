@@ -11,3 +11,5 @@ items:
 characters:
   - player
 visited: false
+story:
+  - intro

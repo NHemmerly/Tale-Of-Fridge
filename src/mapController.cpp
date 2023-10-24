@@ -90,6 +90,26 @@ const std::vector<std::shared_ptr<Item>> MapController::loadItems(const YAML::No
     return items;
 }
 
+const std::vector<std::string> MapController::loadStory(const YAML::Node& room)
+{
+    std::vector<std::string> story;
+    if (room["story"] && room["story"].IsSequence())
+    {
+        const YAML::Node& storiesNode = room["story"];
+
+        for (const auto& storyNode : storiesNode)
+        {
+            if(storyNode.IsScalar())
+            {
+                std::string newObjectName = fileSearch("yamlAssets/story/", storyNode.as<std::string>());
+                const YAML::Node config = loadYml(newObjectName);
+                story.push_back(config["storyText"].as<std::string>());
+            }
+        }
+    }
+    return story;
+}
+
 const std::vector<std::shared_ptr<Player>> MapController::loadPlayers(const YAML::Node& room)
 {
     std::vector<std::shared_ptr<Player>> players;
@@ -126,8 +146,9 @@ const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath
         std::vector<std::shared_ptr<Item>> items = loadItems(room);
         std::vector<std::shared_ptr<Player>> characters = loadPlayers(room);
         bool visited = room["visited"].as<bool>();
+        std::vector<std::string> story = loadStory(room);
 
-        std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, north, south, east, west, items, characters, visited);
+        std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, north, south, east, west, items, characters, visited, story);
         return newMap;
     } catch (const YAML::BadFile& e) {
         std::cerr << "Can't load yaml :( " << filepath << "\n";

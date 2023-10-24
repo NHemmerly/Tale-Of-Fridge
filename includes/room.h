@@ -10,12 +10,13 @@ public:
     Room(const std::string& name, const std::string& description, const std::string& north,
          const std::string& south, const std::string& east, const std::string& west,
          const std::vector<std::shared_ptr<Item>>& items, const std::vector<std::shared_ptr<Player>>& players,
-         const bool& visited);
+         const bool& visited, const std::vector<std::string>& story);
 
     const std::string& getName();
 
     
     std::vector<std::shared_ptr<Player>> players;
+    std::vector<std::string> story;
 private:
     std::string name;
     std::string description;
