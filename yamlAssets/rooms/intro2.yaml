@@ -1,5 +1,7 @@
 name: Rubbled cobblstone path
-description: You stand on a destroyed cobblestone street a few steps from the doorway to your home
+description: |
+  You stand on a destroyed cobblestone street a few steps from the doorway to your home, a potion and 
+  pain lay on the ground close to your feet.
 north: path to city center
 south: This way is blocked by rubble!
 east: This way is blocked by rubble!

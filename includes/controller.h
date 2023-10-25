@@ -22,6 +22,7 @@ public:
 
 private:
     std::vector<std::string> splitString(const std::string& input);
+    //Menu and Bag Flow
     void displayMenu();
     void menuFlow();
     void exitMenu();
@@ -31,6 +32,8 @@ private:
     void statusFlow();
     void exitStatus();
     void quitGame();
+    //Look
+    void lookRoom();
     int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
     std::vector<std::string> verbs;

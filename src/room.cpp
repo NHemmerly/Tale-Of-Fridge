@@ -49,3 +49,12 @@ void Room::playRoom()
     }
   }
 }
+
+void Room::printDescription()
+{
+  std::cout << "==================================\n" <<
+  name << "\n" <<
+  "==================================\n";
+  lineByLine(description);
+  std::cout << "==================================\n";
+}

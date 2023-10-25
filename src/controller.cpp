@@ -5,11 +5,13 @@ bool menuOn = false;
 bool displaying = false;
 bool displayingItem = false;
 
+//Current Player location
+std::shared_ptr<Room> currentRoom;
 Controller::Controller()
 {
     this->verbs = 
     {
-        "go", "take", "use", "look"
+        "go", "take", "use"
     };
     this->nouns = 
     {
@@ -17,7 +19,7 @@ Controller::Controller()
     };
     this->keyWords =
     {
-        "menu", "exit", "bag"
+        "menu", "exit", "bag", "look"
     };
     this->menu = 
     {
@@ -28,7 +30,6 @@ Controller::Controller()
 int Controller::runGame()
 {
 
-    std::shared_ptr<Room> currentRoom;
     mapController.buildMap();
     currentRoom = mapController.maps[0];
     std::shared_ptr<Player> loadPlayer = currentRoom->players[0];
@@ -59,7 +60,6 @@ int Controller::runGame()
             {
                 std::cin >> inputHandler;
                 parseCommand(inputHandler);
-                std::cout << inputLoop << "\n";
                 inputLoop = getGameState();
             }
         return 0;
@@ -96,6 +96,10 @@ void Controller::parseCommand(const std::string& input)
         {
             menuFlow();
         } 
+        if (verb.compare("look") == 0)
+        {
+            lookRoom();
+        }
     }
 
 
@@ -279,6 +283,11 @@ std::vector<std::string> Controller::splitString(const std::string& input)
         words.push_back(word);
     }
     return words;
+}
+
+void Controller::lookRoom()
+{
+    currentRoom->printDescription();
 }
 
 //Utility

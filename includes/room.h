@@ -23,6 +23,7 @@ public:
   void playRoom();
   std::string makeName(const int& part);
   void writeText(const int& part);
+  void printDescription();
   std::vector<std::shared_ptr<Item>> items;
 private:
   void lineByLine(const std::string& text);
