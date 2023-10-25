@@ -34,6 +34,7 @@ private:
     void quitGame();
     //Look
     void lookRoom();
+    
     int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
     std::vector<std::string> verbs;

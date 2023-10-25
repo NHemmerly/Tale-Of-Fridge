@@ -45,7 +45,7 @@ const std::shared_ptr<Item> MapController::createItem(const std::string& filepat
     std::string name = config["item"]["name"].as<std::string>();
     std::string description = config["item"]["description"].as<std::string>();
     int attack = config["item"]["attack"].as<int>();
-    int defense = config["item"]["attack"].as<int>();
+    int defense = config["item"]["defense"].as<int>();
 
     std::shared_ptr<Item> newItem = std::make_shared<Item>(name, description, attack, defense);
     return newItem;

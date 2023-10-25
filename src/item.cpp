@@ -91,9 +91,7 @@ void Item::displayInfo()
     "==================================\n" << 
     "Description: " << description << "\n" <<
     "Attack: " << attack << "\n" << 
-    "Defense: " << defense << "\n" <<
-    "0. use" <<  "\n" <<
-    "1. exit" << "\n";
+    "Defense: " << defense << "\n";
 }
 
 //Adders and Removers

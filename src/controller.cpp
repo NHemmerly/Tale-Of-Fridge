@@ -58,7 +58,7 @@ int Controller::runGame()
 
             while(inputLoop)
             {
-                std::cin >> inputHandler;
+                std::getline(std::cin, inputHandler);
                 parseCommand(inputHandler);
                 inputLoop = getGameState();
             }
@@ -81,13 +81,23 @@ void Controller::parseCommand(const std::string& input)
 
     if (words.empty())
     {
-        std::cout << "Please enter a command." << std::endl;
+        std::cout << "What would you like to do?" << std::endl;
         return;
     }
 
-    //convert first word to lowercase
+    //convert input string to lowercase
+    for (std::string& word : words)
+    {
+        std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+    }
+
     std::string verb = words[0];
-    std::transform(verb.begin(), verb.end(), verb.begin(), ::tolower);
+    if (words.size() > 1)
+    {
+        std::string object = words[1];
+    }
+
+    std::cout << words.size() << "\n";
 
     if ( std::find(keyWords.begin(), keyWords.end(), verb) != keyWords.end())
     {
@@ -98,7 +108,12 @@ void Controller::parseCommand(const std::string& input)
         } 
         if (verb.compare("look") == 0)
         {
-            lookRoom();
+            if (words.size() == 2)
+            {
+                currentRoom->searchItems(words[1]);
+            } else {
+                lookRoom();
+            }
         }
     }
 
@@ -227,6 +242,8 @@ void Controller::itemFlow(const int& dataIndex)
     displayingItem = true;
     while(displayingItem)
     {
+        std::cout << "0. use" <<  "\n" <<
+        "1. exit" << "\n";
         std::cin >> inputString;
         input = convertInt(inputString);
         if (input != 0 && input != 1)

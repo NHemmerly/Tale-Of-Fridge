@@ -24,6 +24,7 @@ public:
   std::string makeName(const int& part);
   void writeText(const int& part);
   void printDescription();
+  void searchItems(const std::string& itemName);
   std::vector<std::shared_ptr<Item>> items;
 private:
   void lineByLine(const std::string& text);

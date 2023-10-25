@@ -58,3 +58,19 @@ void Room::printDescription()
   lineByLine(description);
   std::cout << "==================================\n";
 }
+
+void Room::searchItems(const std::string& itemName)
+{
+  for (const std::shared_ptr<Item> item : items)
+  {
+    if (item->getName() == itemName)
+    {
+      item->displayInfo();
+      return;
+    }
+  }
+
+  std::cout << "Hmm there doesnt seem to be a " << itemName <<
+  " in this room." << "\n";
+
+}
