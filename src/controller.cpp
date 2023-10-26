@@ -309,6 +309,10 @@ std::vector<std::string> Controller::splitString(const std::string& input)
     {
         words.push_back(word);
     }
+    if (menuOn || displaying && words.size() > 1)
+    {
+        words.pop_back();
+    }
     return words;
 }
 
