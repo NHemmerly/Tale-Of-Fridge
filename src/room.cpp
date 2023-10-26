@@ -59,7 +59,27 @@ void Room::printDescription()
   std::cout << "==================================\n";
 }
 
-void Room::searchItems(const std::string& itemName)
+void Room::removeItem(const std::shared_ptr<Item> goneItem)
+{
+  auto it = std::find(items.begin(), items.end(), goneItem);
+  items.erase(it);
+}
+
+const std::shared_ptr<Item> Room::takeItem(const std::string& itemName)
+{
+  for (const std::shared_ptr<Item> item : items)
+  {
+    if (item->getName() == itemName)
+    {
+      return item;
+    }
+  }
+  std::cout << "Where'd you come up with that? There's no " <<
+  itemName << " in here.\n";
+  return nullptr;
+}
+
+void Room::lookItem(const std::string& itemName)
 {
   for (const std::shared_ptr<Item> item : items)
   {

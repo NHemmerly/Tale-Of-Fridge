@@ -5,6 +5,7 @@
 #include <sstream>
 #include <chrono>
 #include <thread>
+#include <algorithm>
 #include "player.h"
 
 class Room
@@ -24,8 +25,10 @@ public:
   std::string makeName(const int& part);
   void writeText(const int& part);
   void printDescription();
-  void searchItems(const std::string& itemName);
+  void lookItem(const std::string& itemName);
+  const std::shared_ptr<Item> takeItem(const std::string& itemName);
   std::vector<std::shared_ptr<Item>> items;
+  void removeItem(const std::shared_ptr<Item> goneItem);
 private:
   void lineByLine(const std::string& text);
   std::string name;

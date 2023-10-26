@@ -96,17 +96,10 @@ void Item::displayInfo()
 
 //Adders and Removers
 
-void InventoryItem::addItem(const std::string& name, const std::string& description, int attack, int defense, int flag)
+void InventoryItem::addItem(const std::shared_ptr<Item> newItem)
 {
     // inventory.push_back(newItem);
-    if (flag == 0)
-    {
-        inventory.push_back(std::make_shared<Item>(name, description, attack, defense));
-    } else if (flag == 1) 
-    {
-        inventory.push_back(std::make_shared<Weapon>(name, description, attack, defense));
-    }
-
+    inventory.push_back(newItem);
 }
 
 void InventoryItem::removeItem(const int& dataIndex)

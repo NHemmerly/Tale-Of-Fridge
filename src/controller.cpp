@@ -19,7 +19,7 @@ Controller::Controller()
     };
     this->keyWords =
     {
-        "menu", "exit", "bag", "look"
+        "menu", "exit", "bag", "look", "take"
     };
     this->menu = 
     {
@@ -48,10 +48,9 @@ int Controller::runGame()
         currentRoom->writeText(2);
         std::cout << player->getName() << "\n";
 
-        player->inventory.addItem(currentRoom->makeName(1), FileLoad::returnText("textAssets/itemDescriptions/theBlade.txt"), 3, 0, 1);
+        player->inventory.addItem(currentRoom->items[0]);
+        player->inventory.setName(0, currentRoom->makeName(1));
         FileLoad::dialogText("textAssets/1/1.txt", player->inventory.getName(0));
-        player->inventory.addItem("Potion", "A healing potion", -10, 0);
-        player->inventory.addItem("Pain", "Owie ouch ow", 20, 0);
         std::cout << mapController.getMapName() << "\n";
 
         bool inputLoop = true;
@@ -110,10 +109,22 @@ void Controller::parseCommand(const std::string& input)
         {
             if (words.size() == 2)
             {
-                currentRoom->searchItems(words[1]);
+                currentRoom->lookItem(words[1]);
             } else {
                 lookRoom();
             }
+        }
+        if (verb.compare("take") == 0)
+        {
+            if (words.size() == 2)
+            {
+                std::shared_ptr<Item> newItem = currentRoom->takeItem(words[1]);
+                if (newItem)
+                {
+                    player->inventory.addItem(currentRoom->takeItem(words[1]));
+                    currentRoom->removeItem(newItem);
+                }
+            } 
         }
     }
 

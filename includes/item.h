@@ -37,7 +37,7 @@ class InventoryItem {
 public:
     InventoryItem();
 
-    void addItem(const std::string& name, const std::string& description, int attack, int defense, int flag = 0);
+    void addItem(const std::shared_ptr<Item> newItem);
     void removeItem(const int& dataIndex);
 
     //Getters
