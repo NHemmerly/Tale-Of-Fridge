@@ -1,9 +1,7 @@
 #include "item.h"
 #include "weapons.h"
 InventoryItem::InventoryItem()
-{
-    this->inventory = inventory;
-}
+{}
 
 
  //Getters

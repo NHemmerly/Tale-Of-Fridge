@@ -9,19 +9,19 @@ bool displayingItem = false;
 std::shared_ptr<Room> currentRoom;
 Controller::Controller()
 {
-    this->verbs = 
+    verbs = 
     {
         "go", "take", "use"
     };
-    this->nouns = 
+    nouns = 
     {
         "north", "south", "east", "west"
     };
-    this->keyWords =
+    keyWords =
     {
         "menu", "exit", "bag", "look", "take"
     };
-    this->menu = 
+    menu = 
     {
         "bag", "status", "save", "exit", "quit game" 
     };
@@ -96,13 +96,12 @@ void Controller::parseCommand(const std::string& input)
         std::string object = words[1];
     }
 
-    std::cout << words.size() << "\n";
-
     if ( std::find(keyWords.begin(), keyWords.end(), verb) != keyWords.end())
     {
 
         if (verb.compare("menu") == 0)
         {
+
             menuFlow();
         } 
         if (verb.compare("look") == 0)
@@ -328,8 +327,7 @@ int Controller::convertInt(const std::string& inputStr)
         input = std::stoi(inputStr);
     } catch (const std::invalid_argument&)
     {
-        std::cerr << "Please enter a number" << "\n";
-        return 999;
+        return -1;
     }
     return input;
 }
