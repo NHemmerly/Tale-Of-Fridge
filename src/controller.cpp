@@ -32,10 +32,10 @@ int Controller::runGame()
 
     mapController.buildMap();
     currentRoom = mapController.maps[0];
-    std::shared_ptr<Player> loadPlayer = currentRoom->players[0];
+    Player loadPlayer = currentRoom->players[0];
     player = loadPlayer;
-    std::cout << player->getName() << "\n";
-    player->setName(currentRoom->players[0]->getName());
+    std::cout << player.getName() << "\n";
+    player.setName(currentRoom->players[0].getName());
 
     bool gameIsRunning = true;
 
@@ -44,13 +44,13 @@ int Controller::runGame()
     {
         //Intro
         std::string inputHandler;
-        player->setName(currentRoom->makeName(0));
+        player.setName(currentRoom->makeName(0));
         currentRoom->writeText(2);
-        std::cout << player->getName() << "\n";
+        std::cout << player.getName() << "\n";
 
-        player->inventory.addItem(currentRoom->items[0]);
-        player->inventory.setName(0, currentRoom->makeName(1));
-        std::cout << player->inventory.getName(0) << ": ";
+        player.inventory.addItem(currentRoom->items[0]);
+        player.inventory.setName(0, currentRoom->makeName(1));
+        std::cout << player.inventory.getName(0) << ": ";
         currentRoom->writeText(3);
         std::cout << mapController.getMapName() << "\n";
 
@@ -121,7 +121,7 @@ void Controller::parseCommand(const std::string& input)
                 std::shared_ptr<Item> newItem = currentRoom->takeItem(words[1]);
                 if (newItem)
                 {
-                    player->inventory.addItem(currentRoom->takeItem(words[1]));
+                    player.inventory.addItem(currentRoom->takeItem(words[1]));
                     currentRoom->removeItem(newItem);
                 }
             } 
@@ -144,34 +144,40 @@ void Controller::displayMenu(){
 
 void Controller::parseMenu(const int& input)
 {
-    switch (input)
+    if (input > menu.size() - 1 || input < 0)
     {
-        case 0:
+        std::cout << "Please enter one of the numbers above" << "\n";
+    } else
+    {
+        switch (input)
         {
-            // Bag
-            player->inventory.displayItems();
-            bagFlow();
-            break;
+            case 0:
+            {
+                // Bag
+                player.inventory.displayItems();
+                bagFlow();
+                break;
+            }
+            case 1:
+            {
+                player.displayInfo();
+                statusFlow();
+                break;
+            }
+            case 3:
+            {
+                // Exit
+                exitMenu();
+                break;
+            }
+            case 4:
+            {
+                quitGame();
+                break;
+            }
+            default:
+                break;
         }
-        case 1:
-        {
-            player->displayInfo();
-            statusFlow();
-            break;
-        }
-        case 3:
-        {
-            // Exit
-            exitMenu();
-            break;
-        }
-        case 4:
-        {
-            quitGame();
-            break;
-        }
-        default:
-            break;
     }
 }
 
@@ -195,11 +201,6 @@ void Controller::menuFlow(){
     {
         std::cin >> inputStr;
         input = convertInt(inputStr);
-        if (input > menu.size() - 1 || input < 0)
-        {
-            std::cout << "Please enter one of the numbers above" << "\n";
-            continue;
-        }
         parseMenu(input);
     }
 
@@ -213,7 +214,7 @@ void Controller::exitMenu()
 void Controller::exitItem()
 {
     displayingItem = false;
-    player->inventory.displayItems();
+    player.inventory.displayItems();
 }
 
 void Controller::exitStatus()
@@ -229,7 +230,7 @@ void Controller::bagFlow()
     std::string inputStr = "";
     while(displaying)
     {
-        int inventorySize = player->inventory.inventorySize();
+        int inventorySize = player.inventory.inventorySize();
         std::cin >> inputStr;
         input = convertInt(inputStr);
         if (input == inventorySize)
@@ -247,7 +248,7 @@ void Controller::bagFlow()
 
 void Controller::itemFlow(const int& dataIndex)
 {
-    player->inventory.displayInfo(dataIndex);
+    player.inventory.displayInfo(dataIndex);
     int input = 0;
     std::string inputString = "";
     displayingItem = true;
@@ -263,7 +264,7 @@ void Controller::itemFlow(const int& dataIndex)
             continue;
         } else if (input == 0)
         {
-            player->useItem(dataIndex);
+            player.useItem(dataIndex);
         }
         exitItem();
         

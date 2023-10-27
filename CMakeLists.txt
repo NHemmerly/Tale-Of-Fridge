@@ -9,8 +9,6 @@ include_directories(${YAML_CPP_INCLUDE_DIRS})
 add_library(fridgeLibs
     includes/player.h
     src/player.cpp
-    includes/fileLoader.h 
-    src/fileLoader.cpp
     includes/item.h 
     src/item.cpp   
     includes/controller.h 

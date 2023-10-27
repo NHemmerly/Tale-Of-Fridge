@@ -51,7 +51,7 @@ const std::shared_ptr<Item> MapController::createItem(const std::string& filepat
     return newItem;
 }
 
-const std::shared_ptr<Player> MapController::createPlayer(const std::string& filepath)
+const Player MapController::createPlayer(const std::string& filepath)
 {
     const YAML::Node player = loadYml(filepath);
 
@@ -60,7 +60,7 @@ const std::shared_ptr<Player> MapController::createPlayer(const std::string& fil
     int attackStat = player["player"]["attackStat"].as<int>();
     int defenseStat = player["player"]["defenseStat"].as<int>();
 
-    std::shared_ptr<Player> newPlayer = std::make_shared<Player>(name, health, attackStat, defenseStat);
+    Player newPlayer(name, health, attackStat, defenseStat);
     return newPlayer;
 }
 
@@ -110,9 +110,9 @@ const std::vector<std::string> MapController::loadStory(const YAML::Node& room)
     return story;
 }
 
-const std::vector<std::shared_ptr<Player>> MapController::loadPlayers(const YAML::Node& room)
+const std::vector<Player> MapController::loadPlayers(const YAML::Node& room)
 {
-    std::vector<std::shared_ptr<Player>> players;
+    std::vector<Player> players;
     if (room["characters"] && room["characters"].IsSequence())
     {
         const YAML::Node& playersNode = room["characters"];
@@ -144,7 +144,7 @@ const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath
         std::string east = room["east"].as<std::string>();
         std::string west = room["west"].as<std::string>();
         std::vector<std::shared_ptr<Item>> items = loadItems(room);
-        std::vector<std::shared_ptr<Player>> characters = loadPlayers(room);
+        std::vector<Player> characters = loadPlayers(room);
         bool visited = room["visited"].as<bool>();
         std::vector<std::string> story = loadStory(room);
 

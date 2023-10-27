@@ -5,7 +5,6 @@
 #include <vector>
 #include <algorithm>
 #include <typeinfo>
-#include "fileLoader.h"
 #include "item.h"
 #include "player.h"
 #include "mapController.h"
@@ -42,6 +41,6 @@ private:
     std::vector<std::string> keyWords;
     std::vector<std::string> menu;
     bool gameState = true;
-    std::shared_ptr<Player> player;
+    Player player;
     MapController mapController;
 };
