@@ -23,7 +23,9 @@ class MapController
 
         const std::string& getMapName();
         std::vector<std::shared_ptr<Room>> maps;
+        const std::shared_ptr<Room> findRoom(const std::string& roomName);
     private:
+        const std::map<std::string, std::shared_ptr<Room>> loadDirections(const YAML::Node& room);
         const std::shared_ptr<Room> buildRoom(const std::string& filepath);
         const std::vector<std::shared_ptr<Item>> loadItems(const YAML::Node& room);
         const std::vector<Player> loadPlayers(const YAML::Node& room);

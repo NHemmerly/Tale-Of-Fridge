@@ -64,10 +64,37 @@ const Player MapController::createPlayer(const std::string& filepath)
     return newPlayer;
 }
 
+const std::shared_ptr<Room> MapController::findRoom(const std::string& roomName)
+{
+    std::cout << roomName << "\n";
+    for (const auto& room : maps)
+    {
+        if (room->getName() == roomName)
+        {
+            return room;
+        }
+    }
+    std::cout << "Room not found!" << "\n";
+    return nullptr; 
+}
+
+const std::map<std::string, std::shared_ptr<Room>> MapController::loadDirections(const YAML::Node& room)
+{
+    std::map<std::string, std::shared_ptr<Room>> directions;
+    if (room["directions"] && room["directions"].IsMap() && room["directions"].IsDefined())
+    {
+        for (const auto& directionNode : room["directions"])
+        {
+            directions[directionNode.first.as<std::string>()] = findRoom(directionNode.second.as<std::string>());
+        }
+    }
+    return directions;
+}
+
 const std::vector<std::shared_ptr<Item>> MapController::loadItems(const YAML::Node& room)
 {
     std::vector<std::shared_ptr<Item>> items;
-    if (room["items"] && room["items"].IsSequence())
+    if (room["items"] && room["items"].IsSequence() && room["items"].IsDefined())
     {
         const YAML::Node& itemsNode = room["items"];
 
@@ -113,7 +140,7 @@ const std::vector<std::string> MapController::loadStory(const YAML::Node& room)
 const std::vector<Player> MapController::loadPlayers(const YAML::Node& room)
 {
     std::vector<Player> players;
-    if (room["characters"] && room["characters"].IsSequence())
+    if (room["characters"] && room["characters"].IsSequence() && room["characters"].IsDefined())
     {
         const YAML::Node& playersNode = room["characters"];
 
@@ -139,18 +166,17 @@ const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath
 
         std::string name = room["name"].as<std::string>();
         std::string description = room["description"].as<std::string>();
-        std::string north = room["north"].as<std::string>();
-        std::string south = room["south"].as<std::string>();
-        std::string east = room["east"].as<std::string>();
-        std::string west = room["west"].as<std::string>();
+        std::map<std::string, std::shared_ptr<Room>> directions = loadDirections(room);
         std::vector<std::shared_ptr<Item>> items = loadItems(room);
         std::vector<Player> characters = loadPlayers(room);
+        std::cout << "return direction?" << "\n";
         bool visited = room["visited"].as<bool>();
         std::vector<std::string> story = loadStory(room);
 
-        std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, north, south, east, west, items, characters, visited, story);
+        std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, directions, items, characters, visited, story);
         return newMap;
     } catch (const YAML::BadFile& e) {
+        std::cout << filepath << "1\n";
         std::cerr << "Can't load yaml :( " << filepath << "\n";
 
         return nullptr;
@@ -164,6 +190,7 @@ void MapController::buildMap()
     {
         for (const auto& entry : std::filesystem::directory_iterator(mapPath))
         {
+            std::cout << entry.path().string() << "\n";
             maps.push_back(buildRoom(entry.path().string()));
         }
     }

@@ -1,0 +1,9 @@
+name: rubble
+description: |
+  Rubble blocks your path.
+  You may not continue in this direction.
+directions: {}
+items: []
+characters: []
+visited: false
+story: []

@@ -1,0 +1,15 @@
+name: Path to city center
+description: |
+  This path leads to the center of the city, a potion and 
+  pain lay on the ground close to your feet.
+directions:
+  north: rubble
+  south: rubble
+  east: rubble
+  west: rubble
+items:
+  - potion
+  - pain
+characters: []
+visited: false
+story: []

@@ -31,7 +31,7 @@ int Controller::runGame()
 {
 
     mapController.buildMap();
-    currentRoom = mapController.maps[0];
+    currentRoom = mapController.findRoom("Rubbled cobblestone path");
     Player loadPlayer = currentRoom->players[0];
     player = loadPlayer;
     std::cout << player.getName() << "\n";

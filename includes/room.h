@@ -5,14 +5,14 @@
 #include <sstream>
 #include <chrono>
 #include <thread>
+#include <map>
 #include <algorithm>
 #include "player.h"
 
 class Room
 {
 public:
-  Room(const std::string& name, const std::string& description, const std::string& north,
-      const std::string& south, const std::string& east, const std::string& west,
+  Room(const std::string& name, const std::string& description, const std::map<std::string, std::shared_ptr<Room>>& directions,
       const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
       const bool& visited, const std::vector<std::string>& story);
 
@@ -29,13 +29,10 @@ public:
   const std::shared_ptr<Item> takeItem(const std::string& itemName);
   std::vector<std::shared_ptr<Item>> items;
   void removeItem(const std::shared_ptr<Item> goneItem);
+  std::map<std::string, std::shared_ptr<Room>> directions;
 private:
   void lineByLine(const std::string& text);
   std::string name;
   std::string description;
-  std::string north;
-  std::string south;
-  std::string east;
-  std::string west;
   bool visited;
 };

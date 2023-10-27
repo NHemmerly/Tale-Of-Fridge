@@ -1,10 +1,9 @@
 #include "room.h"
 
-Room::Room(const std::string& name, const std::string& description, const std::string& north,
-         const std::string& south, const std::string& east, const std::string& west,
+Room::Room(const std::string& name, const std::string& description, const std::map<std::string, std::shared_ptr<Room>>& directions,
          const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
          const bool& visited, const std::vector<std::string>& story)
-    : name(name), description(description), north(north), south(south), east(east), west(west),
+    : name(name), description(description), directions(directions),
       items(items), players(players), visited(visited), story(story)
 {}
 
