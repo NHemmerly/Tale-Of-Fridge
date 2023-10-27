@@ -50,7 +50,8 @@ int Controller::runGame()
 
         player->inventory.addItem(currentRoom->items[0]);
         player->inventory.setName(0, currentRoom->makeName(1));
-        FileLoad::dialogText("textAssets/1/1.txt", player->inventory.getName(0));
+        std::cout << player->inventory.getName(0) << ": ";
+        currentRoom->writeText(3);
         std::cout << mapController.getMapName() << "\n";
 
         bool inputLoop = true;
@@ -308,10 +309,6 @@ std::vector<std::string> Controller::splitString(const std::string& input)
     if (!word.empty())
     {
         words.push_back(word);
-    }
-    if (menuOn || displaying && words.size() > 1)
-    {
-        words.pop_back();
     }
     return words;
 }
