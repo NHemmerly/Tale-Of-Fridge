@@ -4,7 +4,7 @@ description: |
   pain lay on the ground close to your feet.
 directions:
   north: rubble
-  south: rubble
+  south: Rubbled cobblestone path
   east: rubble
   west: rubble
 items:

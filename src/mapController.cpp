@@ -66,7 +66,6 @@ const Player MapController::createPlayer(const std::string& filepath)
 
 const std::shared_ptr<Room> MapController::findRoom(const std::string& roomName)
 {
-    std::cout << roomName << "\n";
     for (const auto& room : maps)
     {
         if (room->getName() == roomName)
@@ -74,7 +73,8 @@ const std::shared_ptr<Room> MapController::findRoom(const std::string& roomName)
             return room;
         }
     }
-    std::cout << "Room not found!" << "\n";
+
+    std::cout << roomName <<"Room not found!" << "\n";
     return nullptr; 
 }
 
@@ -169,14 +169,12 @@ const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath
         std::map<std::string, std::shared_ptr<Room>> directions = loadDirections(room);
         std::vector<std::shared_ptr<Item>> items = loadItems(room);
         std::vector<Player> characters = loadPlayers(room);
-        std::cout << "return direction?" << "\n";
         bool visited = room["visited"].as<bool>();
         std::vector<std::string> story = loadStory(room);
 
         std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, directions, items, characters, visited, story);
         return newMap;
     } catch (const YAML::BadFile& e) {
-        std::cout << filepath << "1\n";
         std::cerr << "Can't load yaml :( " << filepath << "\n";
 
         return nullptr;
@@ -190,7 +188,6 @@ void MapController::buildMap()
     {
         for (const auto& entry : std::filesystem::directory_iterator(mapPath))
         {
-            std::cout << entry.path().string() << "\n";
             maps.push_back(buildRoom(entry.path().string()));
         }
     }

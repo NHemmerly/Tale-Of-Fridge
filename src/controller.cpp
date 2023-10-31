@@ -11,7 +11,7 @@ Controller::Controller()
 {
     verbs = 
     {
-        "go", "take", "use"
+        "take", "use"
     };
     nouns = 
     {
@@ -19,7 +19,7 @@ Controller::Controller()
     };
     keyWords =
     {
-        "menu", "exit", "bag", "look", "take"
+        "go", "menu", "exit", "bag", "look", "take"
     };
     menu = 
     {
@@ -34,7 +34,6 @@ int Controller::runGame()
     currentRoom = mapController.findRoom("Rubbled cobblestone path");
     Player loadPlayer = currentRoom->players[0];
     player = loadPlayer;
-    std::cout << player.getName() << "\n";
     player.setName(currentRoom->players[0].getName());
 
     bool gameIsRunning = true;
@@ -53,6 +52,12 @@ int Controller::runGame()
         std::cout << player.inventory.getName(0) << ": ";
         currentRoom->writeText(3);
         std::cout << mapController.getMapName() << "\n";
+
+        std::cout << currentRoom->directions["north"]->getName();
+        std::cout << currentRoom->directions["south"]->getName();
+        std::cout << currentRoom->directions["east"]->getName();
+        std::cout << currentRoom->directions["west"]->getName();
+
 
         bool inputLoop = true;
 
@@ -92,13 +97,16 @@ void Controller::parseCommand(const std::string& input)
     }
 
     std::string verb = words[0];
-    if (words.size() > 1)
-    {
-        std::string object = words[1];
-    }
-
     if ( std::find(keyWords.begin(), keyWords.end(), verb) != keyWords.end())
     {
+        if (words.size() > 1)
+        {
+            std::string object = words[1];
+            if (verb.compare("go") == 0)
+            {
+                goDirection(object);
+            }
+        }
 
         if (verb.compare("menu") == 0)
         {
@@ -127,6 +135,7 @@ void Controller::parseCommand(const std::string& input)
             } 
         }
     }
+
 
 
 }
@@ -332,6 +341,17 @@ int Controller::convertInt(const std::string& inputStr)
         return -1;
     }
     return input;
+}
+
+//Go
+void Controller::goDirection(const std::string& direction)
+{
+    currentRoom = currentRoom->directions[direction];
+    std::cout << currentRoom->directions["north"]->getName();
+    std::cout << currentRoom->directions["south"]->getName();
+    std::cout << currentRoom->directions["east"]->getName();
+    std::cout << currentRoom->directions["west"]->getName();
+    std::cout << currentRoom->getName() << "\n";
 }
 
 

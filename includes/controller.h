@@ -33,6 +33,8 @@ private:
     void quitGame();
     //Look
     void lookRoom();
+    //Go
+    void goDirection(const std::string& direction);
     
     int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
