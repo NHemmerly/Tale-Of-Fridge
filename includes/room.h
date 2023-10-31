@@ -12,7 +12,7 @@
 class Room
 {
 public:
-  Room(const std::string& name, const std::string& description, const std::map<std::string, std::shared_ptr<Room>>& directions,
+  Room(const std::string& name, const std::string& description, const std::map<std::string, std::string>& directions,
       const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
       const bool& visited, const std::vector<std::string>& story);
 
@@ -29,7 +29,7 @@ public:
   const std::shared_ptr<Item> takeItem(const std::string& itemName);
   std::vector<std::shared_ptr<Item>> items;
   void removeItem(const std::shared_ptr<Item> goneItem);
-  std::map<std::string, std::shared_ptr<Room>> directions;
+  std::map<std::string, std::string> directions;
 private:
   void lineByLine(const std::string& text);
   std::string name;

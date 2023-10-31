@@ -12,7 +12,7 @@ const YAML::Node MapController::loadYml(const std::string& filepath)
 const std::string MapController::fileSearch(const std::string& dirPath, const std::string& name)
 {
     std::filesystem::path directory = dirPath;
-    std::string fileName = name + ".yml";
+    std::string fileName = name + ".yaml";
 
     if (std::filesystem::is_directory(directory))
     {
@@ -78,14 +78,14 @@ const std::shared_ptr<Room> MapController::findRoom(const std::string& roomName)
     return nullptr; 
 }
 
-const std::map<std::string, std::shared_ptr<Room>> MapController::loadDirections(const YAML::Node& room)
+const std::map<std::string, std::string> MapController::loadDirections(const YAML::Node& room)
 {
-    std::map<std::string, std::shared_ptr<Room>> directions;
+    std::map<std::string, std::string> directions;
     if (room["directions"] && room["directions"].IsMap() && room["directions"].IsDefined())
     {
         for (const auto& directionNode : room["directions"])
         {
-            directions[directionNode.first.as<std::string>()] = findRoom(directionNode.second.as<std::string>());
+            directions[directionNode.first.as<std::string>()] = directionNode.second.as<std::string>();
         }
     }
     return directions;
@@ -166,14 +166,14 @@ const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath
 
         std::string name = room["name"].as<std::string>();
         std::string description = room["description"].as<std::string>();
-        std::map<std::string, std::shared_ptr<Room>> directions = loadDirections(room);
+        std::map<std::string, std::string> directions = loadDirections(room);
         std::vector<std::shared_ptr<Item>> items = loadItems(room);
         std::vector<Player> characters = loadPlayers(room);
         bool visited = room["visited"].as<bool>();
         std::vector<std::string> story = loadStory(room);
 
-        std::shared_ptr<Room> newMap = std::make_shared<Room>(name, description, directions, items, characters, visited, story);
-        return newMap;
+        std::shared_ptr<Room> newRoom = std::make_shared<Room>(name, description, directions, items, characters, visited, story);
+        return newRoom;
     } catch (const YAML::BadFile& e) {
         std::cerr << "Can't load yaml :( " << filepath << "\n";
 

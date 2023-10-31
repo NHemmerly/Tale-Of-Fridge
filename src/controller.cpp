@@ -53,12 +53,6 @@ int Controller::runGame()
         currentRoom->writeText(3);
         std::cout << mapController.getMapName() << "\n";
 
-        std::cout << currentRoom->directions["north"]->getName();
-        std::cout << currentRoom->directions["south"]->getName();
-        std::cout << currentRoom->directions["east"]->getName();
-        std::cout << currentRoom->directions["west"]->getName();
-
-
         bool inputLoop = true;
 
             while(inputLoop)
@@ -346,11 +340,7 @@ int Controller::convertInt(const std::string& inputStr)
 //Go
 void Controller::goDirection(const std::string& direction)
 {
-    currentRoom = currentRoom->directions[direction];
-    std::cout << currentRoom->directions["north"]->getName();
-    std::cout << currentRoom->directions["south"]->getName();
-    std::cout << currentRoom->directions["east"]->getName();
-    std::cout << currentRoom->directions["west"]->getName();
+    currentRoom = mapController.findRoom(currentRoom->directions[direction]);
     std::cout << currentRoom->getName() << "\n";
 }
 
