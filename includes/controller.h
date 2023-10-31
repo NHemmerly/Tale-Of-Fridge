@@ -16,10 +16,10 @@ public:
     std::shared_ptr<Controller> createInstance();
 
     int runGame();
-    void parseCommand(const std::string& input);
-    bool getGameState();
 
 private:
+    void parseCommand(const std::string& input);
+    bool getGameState();
     std::vector<std::string> splitString(const std::string& input);
     //Menu and Bag Flow
     void displayMenu();
@@ -38,8 +38,6 @@ private:
     
     int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
-    std::vector<std::string> verbs;
-    std::vector<std::string> nouns;
     std::vector<std::string> keyWords;
     std::vector<std::string> menu;
     bool gameState = true;

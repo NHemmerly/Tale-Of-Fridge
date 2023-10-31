@@ -9,14 +9,6 @@ bool displayingItem = false;
 std::shared_ptr<Room> currentRoom;
 Controller::Controller()
 {
-    verbs = 
-    {
-        "take", "use"
-    };
-    nouns = 
-    {
-        "north", "south", "east", "west"
-    };
     keyWords =
     {
         "go", "menu", "exit", "bag", "look", "take"
@@ -27,17 +19,19 @@ Controller::Controller()
     };
 }
 
+/*--Primary-Game-Loop------------------------------------------------------------------*/
+
 int Controller::runGame()
 {
-
+    //--Load-all-rooms--
     mapController.buildMap();
+    //--Set-starting-room-player--
     currentRoom = mapController.findRoom("Rubbled cobblestone path");
     Player loadPlayer = currentRoom->players[0];
     player = loadPlayer;
     player.setName(currentRoom->players[0].getName());
 
     bool gameIsRunning = true;
-
 
     while(gameIsRunning)
     {
@@ -59,7 +53,7 @@ int Controller::runGame()
             {
                 std::getline(std::cin, inputHandler);
                 parseCommand(inputHandler);
-                inputLoop = getGameState();
+                inputLoop = gameState;
             }
         return 0;
     }
@@ -71,8 +65,16 @@ std::shared_ptr<Controller> Controller::createInstance()
     return std::make_shared<Controller>();
 }
 
+/*--Game-State-Controls---------------------------------------------------------------------------*/
 
-//Publix
+void Controller::quitGame()
+{
+    menuOn = false;
+    gameState = false;
+}
+
+/*--Input-Processing------------------------------------------------------------------------------*/
+
 void Controller::parseCommand(const std::string& input)
 {
     //Split input into a vector of words
@@ -93,6 +95,7 @@ void Controller::parseCommand(const std::string& input)
     std::string verb = words[0];
     if ( std::find(keyWords.begin(), keyWords.end(), verb) != keyWords.end())
     {
+        //--Are-there-two-words?--
         if (words.size() > 1)
         {
             std::string object = words[1];
@@ -129,11 +132,50 @@ void Controller::parseCommand(const std::string& input)
             } 
         }
     }
-
-
-
 }
+
+std::vector<std::string> Controller::splitString(const std::string& input)
+{
+    std::vector<std::string> words;
+    std::string word;
+    for (char c : input)
+    {
+        if (c == ' ')
+        {
+            if (!word.empty()) 
+            {
+                words.push_back(word);
+                word.clear();
+            }
+        } else {
+            word += c;
+        }
+    }
+    if (!word.empty())
+    {
+        words.push_back(word);
+    }
+    return words;
+}
+
+int Controller::convertInt(const std::string& inputStr)
+{
+    int input;
+    try 
+    {
+        //Attempt to convert input string to integer
+        input = std::stoi(inputStr);
+    } catch (const std::invalid_argument&)
+    {
+        return -1;
+    }
+    return input;
+}
+
+/*--Menus---------------------------------------------------------------------------*/
+
 //Privates
+
 void Controller::displayMenu(){
     std::cout << "==================================\n" <<
     "Menu\n" << "Enter a number\n" <<
@@ -184,17 +226,6 @@ void Controller::parseMenu(const int& input)
     }
 }
 
-bool Controller::getGameState()
-{
-    return gameState;
-}
-
-void Controller::quitGame()
-{
-    menuOn = false;
-    gameState = false;
-}
-
 void Controller::menuFlow(){
     menuOn = true;
     int input = 0;
@@ -214,17 +245,7 @@ void Controller::exitMenu()
     menuOn = false;
 }
 
-void Controller::exitItem()
-{
-    displayingItem = false;
-    player.inventory.displayItems();
-}
-
-void Controller::exitStatus()
-{
-    displaying = false;
-    displayMenu();
-}
+//--Bag-and-Items--
 
 void Controller::bagFlow()
 {
@@ -274,6 +295,14 @@ void Controller::itemFlow(const int& dataIndex)
     }
 }
 
+void Controller::exitItem()
+{
+    displayingItem = false;
+    player.inventory.displayItems();
+}
+
+//--Player-Status--
+
 void Controller::statusFlow()
 {
     int input = 0;
@@ -293,51 +322,21 @@ void Controller::statusFlow()
     }
 }
 
-std::vector<std::string> Controller::splitString(const std::string& input)
+void Controller::exitStatus()
 {
-    std::vector<std::string> words;
-    std::string word;
-    for (char c : input)
-    {
-        if (c == ' ')
-        {
-            if (!word.empty()) 
-            {
-                words.push_back(word);
-                word.clear();
-            }
-        } else {
-            word += c;
-        }
-    }
-    if (!word.empty())
-    {
-        words.push_back(word);
-    }
-    return words;
+    displaying = false;
+    displayMenu();
 }
 
+/*--Movement-and-Room-Control----------------------------------------------------------------------*/
+
+//--Look--
 void Controller::lookRoom()
 {
     currentRoom->printDescription();
 }
 
-//Utility
-int Controller::convertInt(const std::string& inputStr)
-{
-    int input;
-    try 
-    {
-        //Attempt to convert input string to integer
-        input = std::stoi(inputStr);
-    } catch (const std::invalid_argument&)
-    {
-        return -1;
-    }
-    return input;
-}
-
-//Go
+//--Go--
 void Controller::goDirection(const std::string& direction)
 {
     currentRoom = mapController.findRoom(currentRoom->directions[direction]);
