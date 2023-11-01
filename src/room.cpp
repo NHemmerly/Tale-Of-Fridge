@@ -1,5 +1,7 @@
 #include "room.h"
 
+/*--Publix----------------------------------------------------------------------------------------------------------------*/
+
 Room::Room(const std::string& name, const std::string& description, const std::map<std::string, std::string>& directions,
          const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
          const bool& visited, const std::vector<std::string>& story)
@@ -7,13 +9,12 @@ Room::Room(const std::string& name, const std::string& description, const std::m
       items(items), players(players), visited(visited), story(story)
 {}
 
+/*--Getters-Setters--------------------------------------------------------------------------------------------------------*/
+
 const std::string& Room::getName()
 {
   return name;
 }
-
-
-//Story Handling
 
 std::string Room::makeName(const int& part)
 {
@@ -22,20 +23,21 @@ std::string Room::makeName(const int& part)
   std::cin >> inputHandler;
   return inputHandler;
 }
+
+/*--TextControl--------------------------------------------------------------------------------------------------------------*/
+
 void Room::writeText(const int& part)
 {
   lineByLine(story[part]);
 }
-void Room::lineByLine(const std::string& text)
-{
-  std::stringstream textStream(text);
-  std::string line;
 
-  while (std::getline(textStream, line))
-  {
-    std::cout << line << "\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-  }
+void Room::printDescription()
+{
+  std::cout << "==================================\n" <<
+  name << "\n" <<
+  "==================================\n";
+  lineByLine(description);
+  std::cout << "==================================\n";
 }
 
 void Room::playRoom()
@@ -49,14 +51,7 @@ void Room::playRoom()
   }
 }
 
-void Room::printDescription()
-{
-  std::cout << "==================================\n" <<
-  name << "\n" <<
-  "==================================\n";
-  lineByLine(description);
-  std::cout << "==================================\n";
-}
+/*--Lookers-Takers-----------------------------------------------------------------------------------------------------------*/
 
 void Room::removeItem(const std::shared_ptr<Item> goneItem)
 {
@@ -109,3 +104,22 @@ const Player& Room::lookMob(const std::string& mobName)
   " in this room." << "\n";
   return nullPlayer;
 }
+
+/*--Privates------------------------------------------------------------------------------------------------------------------*/
+
+/*--TextControl--------------------------------------------------------------------------------------------------------------*/
+
+void Room::lineByLine(const std::string& text)
+{
+  std::stringstream textStream(text);
+  std::string line;
+
+  while (std::getline(textStream, line))
+  {
+    std::cout << line << "\n";
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+  }
+}
+
+
+

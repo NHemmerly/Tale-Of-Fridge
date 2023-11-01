@@ -16,24 +16,28 @@ public:
       const std::vector<std::shared_ptr<Item>>& items, const std::vector<Player>& players,
       const bool& visited, const std::vector<std::string>& story);
 
+  std::string makeName(const int& part);
   const std::string& getName();
 
-  
-  std::vector<Player> players;
-  std::vector<std::string> story;
-  void playRoom();
-  std::string makeName(const int& part);
+  //TextControl
   void writeText(const int& part);
   void printDescription();
-  void lookItem(const std::string& itemName);
-  const Player& lookMob(const std::string& mobName);
+  void playRoom();
+  //LookersTakers
   const std::shared_ptr<Item> takeItem(const std::string& itemName);
-  std::vector<std::shared_ptr<Item>> items;
   void removeItem(const std::shared_ptr<Item> goneItem);
+  const Player& lookMob(const std::string& mobName);
+  void lookItem(const std::string& itemName);
+  //Objects
   std::map<std::string, std::string> directions;
+  std::vector<std::shared_ptr<Item>> items;
+  std::vector<std::string> story;
+  std::vector<Player> players;
 private:
+  //TextControl
   void lineByLine(const std::string& text);
-  std::string name;
+  //Objects
   std::string description;
+  std::string name;
   bool visited;
 };

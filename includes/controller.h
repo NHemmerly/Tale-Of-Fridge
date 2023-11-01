@@ -18,9 +18,14 @@ public:
     int runGame();
 
 private:
+    //Input Processing
     void parseCommand(const std::string& input);
-    bool getGameState();
+    int convertInt(const std::string& inputStr);
     std::vector<std::string> splitString(const std::string& input);
+    void parseMenu(const int& input);
+    //Gamestate Controls
+    void quitGame();
+    bool gameState = true;
     //Menu and Bag Flow
     void displayMenu();
     void menuFlow();
@@ -30,7 +35,6 @@ private:
     void exitItem();
     void statusFlow();
     void exitStatus();
-    void quitGame();
     //Look
     void lookRoom();
     //Go
@@ -39,13 +43,11 @@ private:
     void fightMob(const std::string& mobName);
     void combatFlow(const Player& mob);
     void displayCombat(const Player& mob);
-    
-    int convertInt(const std::string& inputStr);
-    void parseMenu(const int& input);
+    //Keywords
     std::vector<std::string> keyWords;
     std::vector<std::string> menu;
     std::vector<std::string> combat;
-    bool gameState = true;
+    //Objects
     Player player;
     MapController mapController;
 };

@@ -15,22 +15,26 @@ class MapController
 {
     public:
         MapController();
-        const YAML::Node loadYml(const std::string& filepath);
+        void buildMap();
+        //Get
+        const std::string& getMapName();
+        const std::shared_ptr<Room> findRoom(const std::string& roomName);
+        //Object
+        std::vector<std::shared_ptr<Room>> maps;
+    private:
+        //FScontrol
+        const std::string fileSearch(const std::string& dirPath, const std::string& name);
+        //Creators
         const std::shared_ptr<Weapon> createWeapon(const std::string& filepath);
         const std::shared_ptr<Item> createItem(const std::string& filepath);
         const Player createPlayer(const std::string& filepath);
-        void buildMap();
-
-        const std::string& getMapName();
-        std::vector<std::shared_ptr<Room>> maps;
-        const std::shared_ptr<Room> findRoom(const std::string& roomName);
-    private:
+        //Loaders
+        const YAML::Node loadYml(const std::string& filepath);
         const std::map<std::string, std::string> loadDirections(const YAML::Node& room);
-        const std::shared_ptr<Room> buildRoom(const std::string& filepath);
         const std::vector<std::shared_ptr<Item>> loadItems(const YAML::Node& room);
         const std::vector<Player> loadPlayers(const YAML::Node& room);
         const std::vector<std::string> loadStory(const YAML::Node& room);
-        const std::string fileSearch(const std::string& dirPath, const std::string& name);
+        const std::shared_ptr<Room> buildRoom(const std::string& filepath);
 
         
 

@@ -1,13 +1,43 @@
 #include "mapController.h"
 
+
+/*--Publix-----------------------------------------------------------------------------------------------------*/
 MapController::MapController(){}
 
-const YAML::Node MapController::loadYml(const std::string& filepath)
+void MapController::buildMap()
 {
-    //load yaml
-    YAML::Node config = YAML::LoadFile(filepath);
-    return config;  
+    std::filesystem::path mapPath = "yamlAssets/rooms/";
+    if (std::filesystem::is_directory(mapPath))
+    {
+        for (const auto& entry : std::filesystem::directory_iterator(mapPath))
+        {
+            maps.push_back(buildRoom(entry.path().string()));
+        }
+    }
 }
+
+const std::string& MapController::getMapName()
+{
+    return maps[0]->getName();
+}
+
+const std::shared_ptr<Room> MapController::findRoom(const std::string& roomName)
+{
+    for (const auto& room : maps)
+    {
+        if (room->getName() == roomName)
+        {
+            return room;
+        }
+    }
+
+    std::cout << roomName <<"Room not found!" << "\n";
+    return nullptr; 
+}
+
+/*--Privates-----------------------------------------------------------------------------------------------*/
+
+/*--FS-Control---------------------------------------------------------------------------------------------*/
 
 const std::string MapController::fileSearch(const std::string& dirPath, const std::string& name)
 {
@@ -25,58 +55,15 @@ const std::string MapController::fileSearch(const std::string& dirPath, const st
     return "Directory Error";
 }
 
-const std::shared_ptr<Weapon> MapController::createWeapon(const std::string& filepath)
+/*--Loaders------------------------------------------------------------------------------------------------*/
+
+const YAML::Node MapController::loadYml(const std::string& filepath)
 {
-    const YAML::Node config = loadYml(filepath);
-
-    std::string name = config["weapon"]["name"].as<std::string>();
-    std::string description = config["weapon"]["description"].as<std::string>();
-    int attack = config["weapon"]["attack"].as<int>();
-    int defense = config["weapon"]["attack"].as<int>();
-
-    std::shared_ptr<Weapon> newWeapon = std::make_shared<Weapon>(name, description, attack, defense);
-    return newWeapon;
+    //load yaml
+    YAML::Node config = YAML::LoadFile(filepath);
+    return config;  
 }
 
-const std::shared_ptr<Item> MapController::createItem(const std::string& filepath)
-{
-    const YAML::Node config = loadYml(filepath);
-
-    std::string name = config["item"]["name"].as<std::string>();
-    std::string description = config["item"]["description"].as<std::string>();
-    int attack = config["item"]["attack"].as<int>();
-    int defense = config["item"]["defense"].as<int>();
-
-    std::shared_ptr<Item> newItem = std::make_shared<Item>(name, description, attack, defense);
-    return newItem;
-}
-
-const Player MapController::createPlayer(const std::string& filepath)
-{
-    const YAML::Node player = loadYml(filepath);
-
-    std::string name = player["player"]["name"].as<std::string>();
-    int health = player["player"]["health"].as<int>();
-    int attackStat = player["player"]["attackStat"].as<int>();
-    int defenseStat = player["player"]["defenseStat"].as<int>();
-
-    Player newPlayer(name, health, attackStat, defenseStat);
-    return newPlayer;
-}
-
-const std::shared_ptr<Room> MapController::findRoom(const std::string& roomName)
-{
-    for (const auto& room : maps)
-    {
-        if (room->getName() == roomName)
-        {
-            return room;
-        }
-    }
-
-    std::cout << roomName <<"Room not found!" << "\n";
-    return nullptr; 
-}
 
 const std::map<std::string, std::string> MapController::loadDirections(const YAML::Node& room)
 {
@@ -158,6 +145,46 @@ const std::vector<Player> MapController::loadPlayers(const YAML::Node& room)
     return players;        
 }
 
+/*--Creators------------------------------------------------------------------------------------------------*/
+
+const std::shared_ptr<Weapon> MapController::createWeapon(const std::string& filepath)
+{
+    const YAML::Node config = loadYml(filepath);
+
+    std::string name = config["weapon"]["name"].as<std::string>();
+    std::string description = config["weapon"]["description"].as<std::string>();
+    int attack = config["weapon"]["attack"].as<int>();
+    int defense = config["weapon"]["attack"].as<int>();
+
+    std::shared_ptr<Weapon> newWeapon = std::make_shared<Weapon>(name, description, attack, defense);
+    return newWeapon;
+}
+
+const std::shared_ptr<Item> MapController::createItem(const std::string& filepath)
+{
+    const YAML::Node config = loadYml(filepath);
+
+    std::string name = config["item"]["name"].as<std::string>();
+    std::string description = config["item"]["description"].as<std::string>();
+    int attack = config["item"]["attack"].as<int>();
+    int defense = config["item"]["defense"].as<int>();
+
+    std::shared_ptr<Item> newItem = std::make_shared<Item>(name, description, attack, defense);
+    return newItem;
+}
+
+const Player MapController::createPlayer(const std::string& filepath)
+{
+    const YAML::Node player = loadYml(filepath);
+
+    std::string name = player["player"]["name"].as<std::string>();
+    int health = player["player"]["health"].as<int>();
+    int attackStat = player["player"]["attackStat"].as<int>();
+    int defenseStat = player["player"]["defenseStat"].as<int>();
+
+    Player newPlayer(name, health, attackStat, defenseStat);
+    return newPlayer;
+}
 
 const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath)
 {
@@ -181,20 +208,5 @@ const std::shared_ptr<Room> MapController::buildRoom(const std::string& filepath
     }
 }
 
-void MapController::buildMap()
-{
-    std::filesystem::path mapPath = "yamlAssets/rooms/";
-    if (std::filesystem::is_directory(mapPath))
-    {
-        for (const auto& entry : std::filesystem::directory_iterator(mapPath))
-        {
-            maps.push_back(buildRoom(entry.path().string()));
-        }
-    }
-}
 
-const std::string& MapController::getMapName()
-{
-    return maps[0]->getName();
-}
 
