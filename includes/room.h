@@ -26,6 +26,7 @@ public:
   void writeText(const int& part);
   void printDescription();
   void lookItem(const std::string& itemName);
+  const Player& lookMob(const std::string& mobName);
   const std::shared_ptr<Item> takeItem(const std::string& itemName);
   std::vector<std::shared_ptr<Item>> items;
   void removeItem(const std::shared_ptr<Item> goneItem);

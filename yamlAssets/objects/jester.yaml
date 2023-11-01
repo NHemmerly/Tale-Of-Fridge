@@ -1,5 +1,5 @@
 player:
-  name: Jester
+  name: jester
   health: 20
   attackStat: 1
   defenseStat: 0

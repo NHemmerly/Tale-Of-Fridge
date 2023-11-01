@@ -35,11 +35,16 @@ private:
     void lookRoom();
     //Go
     void goDirection(const std::string& direction);
+    //Fight
+    void fightMob(const std::string& mobName);
+    void combatFlow(const Player& mob);
+    void displayCombat(const Player& mob);
     
     int convertInt(const std::string& inputStr);
     void parseMenu(const int& input);
     std::vector<std::string> keyWords;
     std::vector<std::string> menu;
+    std::vector<std::string> combat;
     bool gameState = true;
     Player player;
     MapController mapController;

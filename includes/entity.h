@@ -14,6 +14,7 @@ public:
     Entity(const std::string& name, const int& health, const int& attackStat, const int& defenseStat);
     const std::string& getName() const;
     const int& getHP() const;
+    const int& getMaxHp() const;
     const int& getAttack() const;
     const int& getDefense() const;
     void setName(const std::string& name);
@@ -28,6 +29,7 @@ protected:
     void applyStats(const int& dataIndex);
     std::string name;
     int health = 100;
+    int maxHealth;
     int attackStat = 1;
     int defenseStat = 1;
     

@@ -11,11 +11,15 @@ Controller::Controller()
 {
     keyWords =
     {
-        "go", "menu", "exit", "bag", "look", "take"
+        "go", "menu", "exit", "bag", "look", "take", "fight"
     };
     menu = 
     {
         "bag", "status", "save", "exit", "quit game" 
+    };
+    combat = 
+    {
+        "attack", "talk", "bag", "run"
     };
 }
 
@@ -102,6 +106,10 @@ void Controller::parseCommand(const std::string& input)
             if (verb.compare("go") == 0)
             {
                 goDirection(object);
+            }
+            if (verb.compare("fight") == 0)
+            {
+                fightMob(object);
             }
         }
 
@@ -343,4 +351,29 @@ void Controller::goDirection(const std::string& direction)
     std::cout << currentRoom->getName() << "\n";
 }
 
+/*--Combat-------------------------------------------------------------------------------------------*/
 
+//--Fight--
+void Controller::fightMob(const std::string& mobName)
+{
+    const Player currentMob = currentRoom->lookMob(mobName);
+    if (!(currentMob.getName() == "none"))
+    {
+        combatFlow(currentMob);
+    }
+}
+
+void Controller::displayCombat(const Player& mob)
+{
+    std::cout << "==================================\n" <<
+    mob.getName() << "  health: " << mob.getHP() << "/" << mob.getMaxHp() << "\n" <<
+    "==================================\n" <<
+    "1. " << combat[0] << "  2. " << combat[1] << "\n" <<
+    "3. " << combat[2] << "     3. " << combat[3] << "\n" <<
+    "==================================\n";
+}
+
+void Controller::combatFlow(const Player& mob)
+{
+    displayCombat(mob);
+}

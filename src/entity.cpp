@@ -9,7 +9,9 @@ Entity::Entity()
 }
 
 Entity::Entity(const std::string& name, const int& health, const int& attackStat, const int& defenseStat)
-    : name(name), health(health), attackStat(attackStat), defenseStat(defenseStat) {};
+    : name(name), health(health), attackStat(attackStat), defenseStat(defenseStat) {
+        maxHealth = health;
+    };
 
 
 const std::string& Entity::getName() const 
@@ -25,6 +27,11 @@ void Entity::setName(const std::string& newName)
 const int& Entity::getHP() const 
 {
     return health;
+}
+
+const int& Entity::getMaxHp() const
+{
+    return maxHealth;
 }
 
 const int& Entity::getAttack() const 

@@ -93,3 +93,19 @@ void Room::lookItem(const std::string& itemName)
   " in this room." << "\n";
 
 }
+
+const Player& Room::lookMob(const std::string& mobName)
+{
+  for (const auto& mob : players)
+  {
+    if (mob.getName() == mobName)
+    {
+      return mob;
+    }
+  }
+
+  static const Player nullPlayer;
+  std::cout << "Hmm there doesn't seem to be a " << mobName << 
+  " in this room." << "\n";
+  return nullPlayer;
+}
