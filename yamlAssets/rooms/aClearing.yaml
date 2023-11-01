@@ -1,0 +1,14 @@
+name: A comedic clearing
+description: |
+  A dancing jester stands at the center of a small clearing surrounded by rubble.
+  He stands in front of the only path forward.
+directions:
+  north: City Center
+  south: Path to city center
+  east: rubble
+  west: rubble
+items: []
+characters: 
+  - jester
+visited: false
+story: []

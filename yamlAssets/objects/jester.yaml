@@ -1,0 +1,5 @@
+player:
+  name: Jester
+  health: 20
+  attackStat: 1
+  defenseStat: 0
